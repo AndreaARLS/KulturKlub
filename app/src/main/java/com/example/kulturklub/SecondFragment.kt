@@ -32,7 +32,13 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonSecond.setOnClickListener {
+        activity?.title= "Detective de Cine"
+
+        binding.registerButton.setOnClickListener {
+            //findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+        }
+
+        binding.loginLink.setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
     }
