@@ -32,13 +32,14 @@ class Adaptador(var fragmento: Fragment , var lista: MutableList<Evento>, var ac
             fechas = v.findViewById(R.id.fechas)
             botonEdit = v.findViewById(R.id.editIcon)
             botonDelete = v.findViewById(R.id.deleteIcon)
-
             v.setOnClickListener(){
-                val miBundle: Bundle = bundleOf("id" to this.posicion)
+                val miBundle: Bundle = bundleOf("id" to this.position)
                 fragmento.findNavController().navigate(R.id.action_thirdFragment_to_sixthFragment, miBundle)
             }
-
         }
+
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -60,6 +61,7 @@ class Adaptador(var fragmento: Fragment , var lista: MutableList<Evento>, var ac
         } else {
             holder.fechas.text = lista[position].fechaInicio + " - " + lista[position].fechaFin
         }
+
 
         holder.botonEdit.setOnClickListener(){
             val bundle = bundleOf("id" to position)

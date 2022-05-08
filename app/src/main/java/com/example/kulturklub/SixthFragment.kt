@@ -43,7 +43,11 @@ class SixthFragment : Fragment() {
         val lugar = binding.detalleLugarCiudad
         lugar.setText((activity as MainActivity).modelo.eventos[id].lugar + " (" + (activity as MainActivity).modelo.eventos[id].lugar +")" )
         val fechas = binding.detalleFechas
-        fechas.setText((activity as MainActivity).modelo.eventos[id].fechaInicio + " - " + (activity as MainActivity).modelo.eventos[id].fechaFin)
+        if ((activity as MainActivity).modelo.eventos[id].fechaFin.equals("")){
+            fechas.setText((activity as MainActivity).modelo.eventos[id].fechaInicio)
+        } else {
+            fechas.setText((activity as MainActivity).modelo.eventos[id].fechaInicio + " - " + (activity as MainActivity).modelo.eventos[id].fechaFin)
+        }
         val descripcion = binding.detalleDescripcion
         descripcion.setText((activity as MainActivity).modelo.eventos[id].descripcion)
     }
