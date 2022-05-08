@@ -20,4 +20,15 @@
     <string name="loginLink"><u>Ya tengo una cuenta</u></string>
     <string name="RegisterTitle">Nuevo usuario</string>
     <string name="nuevo">Nuevo</string>
+    <string name="nuevoEvento">Nuevo Evento</string>
+    <string name="titulo">Título</string>
+    <string name="tipo">Tipo</string>
+    <string name="descripcion">Descripción</string>
+    <string name="lugar">Lugar</string>
+    <string name="ciudad">Ciudad</string>
+    <string name="fecha">Fecha (inicio)</string>
+    <string name="Fechafin">(Fecha fin)</string>
+    <string name="imgurl">Url de imagen</string>
+    <string name="imagendeevento">Imagen del evento</string>
+    <string name="guardar">GUARDAR</string>
 </resources>
