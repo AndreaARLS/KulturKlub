@@ -42,7 +42,7 @@ class ThirdFragment : Fragment() {
         activity?.title= "Próximos eventos"
 
         binding.nuevo.setOnClickListener(){
-           // findNavController().navigate(R.id.action_thirdFragment_to_ForthFragment)
+            findNavController().navigate(R.id.action_thirdFragment_to_forthFragment)
         }
     }
 
