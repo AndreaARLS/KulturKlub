@@ -32,10 +32,12 @@ class Adaptador(var fragmento: Fragment , var lista: MutableList<Evento>, var ac
             fechas = v.findViewById(R.id.fechas)
             botonEdit = v.findViewById(R.id.editIcon)
             botonDelete = v.findViewById(R.id.deleteIcon)
+
             v.setOnClickListener(){
                 val miBundle: Bundle = bundleOf("id" to this.posicion)
-                fragmento.findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, miBundle)
+                fragmento.findNavController().navigate(R.id.action_thirdFragment_to_sixthFragment, miBundle)
             }
+
         }
     }
 
@@ -72,6 +74,9 @@ class Adaptador(var fragmento: Fragment , var lista: MutableList<Evento>, var ac
         }
 
     }
+
+
+
 
 
 }
