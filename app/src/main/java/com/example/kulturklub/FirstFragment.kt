@@ -35,7 +35,7 @@ class FirstFragment : Fragment() {
         activity?.title= "Kultur Klub"
 
         binding.loginButton.setOnClickListener {
-            //findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            findNavController().navigate(R.id.action_FirstFragment_to_thirdFragment)
         }
 
         binding.registerLink.setOnClickListener {

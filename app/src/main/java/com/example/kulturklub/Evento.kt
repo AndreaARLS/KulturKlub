@@ -1,10 +1,13 @@
-package com.example.recyclerviewexample
+package com.example.kulturklub
 
-import java.time.Year
-
-class Pelicula (
+class Evento (
     var titulo:String,
-    var director:String,
-    var genero: String,
-    var year: String ){
+    var tipo: String,
+    var descripcion: String,
+    var lugar: String,
+    var ciudad: String,
+    var fechaInicio:String,
+    var fechaFin:String,
+    var foto: String
+    ){
 }

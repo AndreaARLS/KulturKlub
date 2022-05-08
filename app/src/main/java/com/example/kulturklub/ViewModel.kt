@@ -1,49 +1,53 @@
-package com.example.recyclerviewexample
+package com.example.kulturklub
 import androidx.lifecycle.ViewModel
 
 class VM: ViewModel() {
-    var peliculas : MutableList<Pelicula> = mutableListOf()
+    var eventos : MutableList<Evento> = mutableListOf()
 
-    var peli1 = Pelicula("Django Unchained", "Quentin Tarantino", "WESTERN", "2012")
-    var peli2 = Pelicula( "Pulp Fiction", "Quentin Tarantino", "CRIMEN", "1994")
-    var peli3 = Pelicula( "El club de la lucha", "David Fincher", "DRAMA", "1999")
-    var peli4 = Pelicula( "Forest Gump", "Robert Zemeckis", "DRAMA", "1994")
-    var peli5 = Pelicula( "La lista de Schindler", "Steven Spielberg", "DRAMA", "1993")
-    var peli6 = Pelicula( "Doce hombre sin piedad", "sidney Lumet", "CRIMEN", "1957")
-    var peli7 = Pelicula( "Alguien voló sobre el nido del Cuco", "Milos Forman", "DRAMA", "1975")
-    var peli8 = Pelicula( "Godfellas", "Martin Scorsese", "CRIMEN", "1990")
-    var peli9 = Pelicula( "Scarface", "Brian De Palma", "CRIMEN", "1983")
-    var peli10 = Pelicula( "Taxi Driver", "Martin Scorsese", "DRAMA", "1976")
+    var event1 = Evento("The Hives", "CONCIERTO", "Garage rock, punk rock, postpunk music. Tercera gira de The Hives por España y segundo concierto en Vitoria-Gasteiz. Entradas a la venta en ticketmaster.com", "Sala Kubik", "Vitoria-Gasteiz", "28/08/2022", "", "https://www.alohacriticon.com/wp-content/uploads/2004/07/the-hives-discografia-t-suecia.jpg")
+    var event2 = Evento("The Hives", "CONCIERTO", "Garage rock, punk rock, postpunk music. Tercera gira de The Hives por España y segundo concierto en Vitoria-Gasteiz. Entradas a la venta en ticketmaster.com", "Sala Kubik", "Vitoria-Gasteiz", "28/08/2022", "", "https://www.alohacriticon.com/wp-content/uploads/2004/07/the-hives-discografia-t-suecia.jpg")
+    var event3 = Evento("The Hives", "CONCIERTO", "Garage rock, punk rock, postpunk music. Tercera gira de The Hives por España y segundo concierto en Vitoria-Gasteiz. Entradas a la venta en ticketmaster.com", "Sala Kubik", "Vitoria-Gasteiz", "28/08/2022", "", "https://www.alohacriticon.com/wp-content/uploads/2004/07/the-hives-discografia-t-suecia.jpg")
+    var event4 = Evento("The Hives", "CONCIERTO", "Garage rock, punk rock, postpunk music. Tercera gira de The Hives por España y segundo concierto en Vitoria-Gasteiz. Entradas a la venta en ticketmaster.com", "Sala Kubik", "Vitoria-Gasteiz", "28/08/2022", "", "https://www.alohacriticon.com/wp-content/uploads/2004/07/the-hives-discografia-t-suecia.jpg")
+    var event5 = Evento("The Hives", "CONCIERTO", "Garage rock, punk rock, postpunk music. Tercera gira de The Hives por España y segundo concierto en Vitoria-Gasteiz. Entradas a la venta en ticketmaster.com", "Sala Kubik", "Vitoria-Gasteiz", "28/08/2022", "", "https://www.alohacriticon.com/wp-content/uploads/2004/07/the-hives-discografia-t-suecia.jpg")
+    var event6 = Evento("The Hives", "CONCIERTO", "Garage rock, punk rock, postpunk music. Tercera gira de The Hives por España y segundo concierto en Vitoria-Gasteiz. Entradas a la venta en ticketmaster.com", "Sala Kubik", "Vitoria-Gasteiz", "28/08/2022", "", "https://www.alohacriticon.com/wp-content/uploads/2004/07/the-hives-discografia-t-suecia.jpg")
+    var event7 = Evento("The Hives", "CONCIERTO", "Garage rock, punk rock, postpunk music. Tercera gira de The Hives por España y segundo concierto en Vitoria-Gasteiz. Entradas a la venta en ticketmaster.com", "Sala Kubik", "Vitoria-Gasteiz", "28/08/2022", "", "https://www.alohacriticon.com/wp-content/uploads/2004/07/the-hives-discografia-t-suecia.jpg")
+    var event8 = Evento("The Hives", "CONCIERTO", "Garage rock, punk rock, postpunk music. Tercera gira de The Hives por España y segundo concierto en Vitoria-Gasteiz. Entradas a la venta en ticketmaster.com", "Sala Kubik", "Vitoria-Gasteiz", "28/08/2022", "", "https://www.alohacriticon.com/wp-content/uploads/2004/07/the-hives-discografia-t-suecia.jpg")
+    var event9 = Evento("The Hives", "CONCIERTO", "Garage rock, punk rock, postpunk music. Tercera gira de The Hives por España y segundo concierto en Vitoria-Gasteiz. Entradas a la venta en ticketmaster.com", "Sala Kubik", "Vitoria-Gasteiz", "28/08/2022", "", "https://www.alohacriticon.com/wp-content/uploads/2004/07/the-hives-discografia-t-suecia.jpg")
+    var event10 = Evento("The Hives", "CONCIERTO", "Garage rock, punk rock, postpunk music. Tercera gira de The Hives por España y segundo concierto en Vitoria-Gasteiz. Entradas a la venta en ticketmaster.com", "Sala Kubik", "Vitoria-Gasteiz", "28/08/2022", "", "https://www.alohacriticon.com/wp-content/uploads/2004/07/the-hives-discografia-t-suecia.jpg")
 
     init{
-        peliculas.add(peli1)
-        peliculas.add(peli2)
-        peliculas.add(peli3)
-        peliculas.add(peli4)
-        peliculas.add(peli5)
-        peliculas.add(peli6)
-        peliculas.add(peli7)
-        peliculas.add(peli8)
-        peliculas.add(peli9)
-        peliculas.add(peli10)
+        eventos.add(event1)
+        eventos.add(event2)
+        eventos.add(event3)
+        eventos.add(event4)
+        eventos.add(event5)
+        eventos.add(event6)
+        eventos.add(event7)
+        eventos.add(event8)
+        eventos.add(event9)
+        eventos.add(event10)
     }
 
 
-    fun nuevaPeli(titulo: String, director: String, ano: String, genero: String){
-        var pelicula = Pelicula(titulo, director, ano, genero)
-        peliculas.add(pelicula)
+    fun nuevoEvent(titulo: String, tipo: String, descripcion: String, lugar: String, ciudad: String, fechainicio: String, fechafin: String, url: String){
+        var newevento = Evento(titulo, tipo, descripcion, lugar, ciudad, fechainicio, fechafin, url)
+        eventos.add(newevento)
     }
 
-    fun editPeli(posicion: Int, titulo: String, director: String, ano: String, genero: String){
-        peliculas[posicion].titulo = titulo
-        peliculas[posicion].director = director
-        peliculas[posicion].year = ano
-        peliculas[posicion].genero = genero
+    fun editEvent(posicion: Int, titulo: String, tipo: String, descripcion: String, lugar: String, ciudad: String, fechainicio: String, fechafin: String, url: String){
+        eventos[posicion].titulo = titulo
+        eventos[posicion].tipo = tipo
+        eventos[posicion].descripcion = descripcion
+        eventos[posicion].lugar = lugar
+        eventos[posicion].ciudad = ciudad
+        eventos[posicion].fechaInicio = fechainicio
+        eventos[posicion].fechaFin = fechafin
+        eventos[posicion].foto = url
 
     }
 
     fun deletePeli(posicion: Int){
-        peliculas.removeAt(posicion)
+        eventos.removeAt(posicion)
     }
 
 

@@ -1,26 +1,24 @@
-package com.example.recyclerviewexample
-
-import android.app.AlertDialog
+package com.example.kulturklub
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.PopupWindow
 import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
-class Adaptador(var fragmento: Fragment , var lista: MutableList<Pelicula>, var activity : MainActivity) : RecyclerView.Adapter<Adaptador.ViewHolder>() {
+class Adaptador(var fragmento: Fragment , var lista: MutableList<Evento>, var activity : MainActivity) : RecyclerView.Adapter<Adaptador.ViewHolder>() {
 
 
     inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+        var tipo: TextView
         var titulo: TextView
-        var director: TextView
-        var genero: TextView
-        var ano: TextView
+        var ciudad: TextView
+        var fechainicio: TextView
+        var fechafin: TextView
 
 
         var botonEdit : ImageView
@@ -29,10 +27,11 @@ class Adaptador(var fragmento: Fragment , var lista: MutableList<Pelicula>, var 
         var posicion= -1
 
         init {
+            tipo = v.findViewById(R.id.tipo)
             titulo = v.findViewById(R.id.Titulo)
-            director = v.findViewById(R.id.director)
-            genero = v.findViewById(R.id.genero)
-            ano = v.findViewById(R.id.ano)
+            ciudad = v.findViewById(R.id.ciudad)
+            fechainicio = v.findViewById(R.id.fechainicio)
+            fechafin = v.findViewById(R.id.fechafin)
             botonEdit = v.findViewById(R.id.editIcon)
             botonDelete = v.findViewById(R.id.deleteIcon)
             v.setOnClickListener(){
@@ -53,20 +52,21 @@ class Adaptador(var fragmento: Fragment , var lista: MutableList<Pelicula>, var 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.tipo.text = lista[position].tipo
         holder.titulo.text = lista[position].titulo
-        holder.director.text = lista[position].director
-        holder.genero.text = lista[position].genero
-        holder.ano.text = lista[position].year
+        holder.ciudad.text = lista[position].ciudad
+        holder.fechainicio.text = lista[position].fechaInicio
+        holder.fechafin.text = lista[position].fechaFin
 
         holder.botonEdit.setOnClickListener(){
             val bundle = bundleOf("id" to position)
-            fragmento.findNavController().navigate(R.id.action_SecondFragment_to_forthFragment, bundle)
+            //fragmento.findNavController().navigate(R.id.action_SecondFragment_to_ForthFragment, bundle)
         }
 
         holder.botonDelete.setOnClickListener(){
 
-            val bundle = bundleOf("id" to position, "name" to lista[position].titulo)
-            activity.popupDelete(bundle)
+            //val bundle = bundleOf("id" to position, "name" to lista[position].titulo)
+            //activity.popupDelete(bundle)
 
         }
 

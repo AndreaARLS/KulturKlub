@@ -19,4 +19,5 @@
     <string name="imageInput">Url de imagen</string>
     <string name="loginLink"><u>Ya tengo una cuenta</u></string>
     <string name="RegisterTitle">Nuevo usuario</string>
+    <string name="nuevo">Nuevo</string>
 </resources>

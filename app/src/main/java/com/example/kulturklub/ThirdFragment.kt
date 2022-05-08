@@ -1,22 +1,20 @@
-package com.example.recyclerviewexample
-
+package com.example.kulturklub
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.recyclerviewexample.databinding.FragmentSecondBinding
+import com.example.kulturklub.databinding.FragmentThirdBinding
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class SecondFragment : Fragment() {
+class ThirdFragment : Fragment() {
 
-    private var _binding: FragmentSecondBinding? = null
+    private var _binding: FragmentThirdBinding? = null
     private val binding get() = _binding!!
     lateinit var miRecyclerView: RecyclerView
 
@@ -26,7 +24,7 @@ class SecondFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        _binding = FragmentThirdBinding.inflate(inflater, container, false)
         return binding.root
 
 
@@ -38,13 +36,13 @@ class SecondFragment : Fragment() {
         miRecyclerView = binding.recycler
         miRecyclerView.layoutManager = LinearLayoutManager(activity)
 
-        miRecyclerView.adapter = Adaptador(this, (activity as MainActivity).modelo.peliculas, activity as MainActivity)
+        miRecyclerView.adapter = Adaptador(this, (activity as MainActivity).modelo.eventos, activity as MainActivity)
 
         //setHasOptionsMenu(true)
-        activity?.title= "Lista de películas"
+        activity?.title= "Próximos eventos"
 
         binding.nuevo.setOnClickListener(){
-            findNavController().navigate(R.id.action_SecondFragment_to_thirdFragment2)
+           // findNavController().navigate(R.id.action_thirdFragment_to_ForthFragment)
         }
     }
 
@@ -57,7 +55,7 @@ class SecondFragment : Fragment() {
         miRecyclerView = binding.recycler
         miRecyclerView.layoutManager = LinearLayoutManager(activity)
 
-        miRecyclerView.adapter = Adaptador(this, (activity as MainActivity).modelo.peliculas, activity as MainActivity)
+        miRecyclerView.adapter = Adaptador(this, (activity as MainActivity).modelo.eventos, activity as MainActivity)
 
     }
 }
