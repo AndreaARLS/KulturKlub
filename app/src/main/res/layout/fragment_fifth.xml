@@ -130,18 +130,36 @@
             android:inputType="textUri"
             android:minHeight="48dp" />
 
-        <Button
-            android:id="@+id/guardarEditarEvento"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_gravity="bottom"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
-            android:text="@string/guardar"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/cancelbutton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="180dp"
+                android:layout_height="60dp"
+                android:text="@string/cancel"
+                android:textColor="@color/purple_500"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/guardarEditarEvento"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="20dp"
+                android:text="@string/guardar"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -62,18 +62,23 @@
                 android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
+
                 <Button
                     android:id="@+id/cancelbutton"
+                    style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="150dp"
                     android:layout_height="60dp"
-                    android:text="@string/cancel" />
+                    android:text="@string/cancel"
+                    android:textColor="@color/purple_500"
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/deletebutton"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginStart="10dp"
-                    android:text="@string/eliminar" />
+                    android:text="@string/eliminar"
+                    android:textSize="16sp" />
 
             </LinearLayout>
         </LinearLayout>

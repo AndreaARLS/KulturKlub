@@ -34,6 +34,6 @@
     <string name="editEvent">Editar Evento</string>
     <string name="eliminarTitulo">Eliminar evento</string>
     <string name="question">¿Está seguro de que desea eliminar este evento?</string>
-    <string name="cancel">CANCELAR</string>
+    <string name="cancel"><u>CANCELAR</u></string>
     <string name="eliminar">ELIMINAR</string>
 </resources>

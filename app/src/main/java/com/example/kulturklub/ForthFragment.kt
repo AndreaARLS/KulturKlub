@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.kulturklub.databinding.FragmentForthBinding
@@ -72,6 +73,14 @@ class ForthFragment : Fragment() {
                 findNavController().navigate(R.id.action_forthFragment_to_thirdFragment)
             }
         }
+
+        val botonCancelar = binding.cancelbutton
+
+        botonCancelar.setOnClickListener {
+            findNavController().navigate(R.id.action_forthFragment_to_thirdFragment)
+        }
+
+
     }
 
     override fun onDestroyView() {

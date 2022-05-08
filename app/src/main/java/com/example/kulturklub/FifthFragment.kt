@@ -85,6 +85,8 @@ class FifthFragment : Fragment() {
 
 
         val botonGuardar = binding.guardarEditarEvento
+
+
         botonGuardar.setOnClickListener {
             var titulo = binding.editTituloInput.text.toString()
             var tipo = binding.editTipoSelect.selectedItem.toString()
@@ -98,6 +100,12 @@ class FifthFragment : Fragment() {
                 (activity as MainActivity).modelo.editEvent(id, titulo, tipo, descripcion, lugar, ciudad, fechaInicio, fechaFin, imagen)
                 findNavController().navigate(com.example.kulturklub.R.id.action_fifthFragment_to_thirdFragment)
             }
+        }
+
+        val botonCancelar = binding.cancelbutton
+
+        botonCancelar.setOnClickListener {
+            findNavController().navigate(R.id.action_fifthFragment_to_thirdFragment)
         }
 
     }
