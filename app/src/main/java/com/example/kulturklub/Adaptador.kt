@@ -60,7 +60,7 @@ class Adaptador(var fragmento: Fragment , var lista: MutableList<Evento>, var ac
 
         holder.botonEdit.setOnClickListener(){
             val bundle = bundleOf("id" to position)
-            //fragmento.findNavController().navigate(R.id.action_SecondFragment_to_ForthFragment, bundle)
+            fragmento.findNavController().navigate(R.id.action_thirdFragment_to_fifthFragment, bundle)
         }
 
         holder.botonDelete.setOnClickListener(){

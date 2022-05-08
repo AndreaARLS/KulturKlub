@@ -56,7 +56,7 @@ class ForthFragment : Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
-        val botonGuardar = binding.buttonFirst2
+        val botonGuardar = binding.guardarNuevoEvento
 
         botonGuardar.setOnClickListener {
             var titulo = binding.newTituloInput.text.toString()

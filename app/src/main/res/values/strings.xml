@@ -31,4 +31,5 @@
     <string name="imgurl">Url de imagen</string>
     <string name="imagendeevento">Imagen del evento</string>
     <string name="guardar">GUARDAR</string>
+    <string name="editEvent">Editar Evento</string>
 </resources>
