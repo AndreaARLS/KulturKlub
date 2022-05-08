@@ -1,14 +1,14 @@
 package com.example.kulturklub
 
+import android.app.AlertDialog
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.activity.viewModels
 import com.example.kulturklub.databinding.ActivityMainBinding
 
@@ -55,4 +55,30 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
+
+    fun popupDelete(bundle: Bundle){
+        val name: String = bundle.getString("name") ?:""
+        val id: Int = bundle.getInt("id") ?:-1
+        val builder = AlertDialog.Builder(this)
+        val view = layoutInflater.inflate(R.layout.deletepopup, null)
+
+        builder.setView(view)
+        val dialog = builder.create()
+        dialog.show()
+
+        val titulo = view.findViewById<TextView>(R.id.eventTitulo)
+        titulo.text = name
+        val delbutton = view.findViewById<TextView>(R.id.deletebutton)
+        val cancelbutton = view.findViewById<TextView>(R.id.cancelbutton)
+
+        cancelbutton.setOnClickListener{
+            dialog.hide()
+        }
+
+        delbutton.setOnClickListener {
+            modelo.deletePeli(id)
+            dialog.hide()
+        }
+    }
+
 }

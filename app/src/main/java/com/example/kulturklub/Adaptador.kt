@@ -65,8 +65,8 @@ class Adaptador(var fragmento: Fragment , var lista: MutableList<Evento>, var ac
 
         holder.botonDelete.setOnClickListener(){
 
-            //val bundle = bundleOf("id" to position, "name" to lista[position].titulo)
-            //activity.popupDelete(bundle)
+            val bundle = bundleOf("id" to position, "name" to lista[position].titulo)
+            activity.popupDelete(bundle)
 
         }
 
