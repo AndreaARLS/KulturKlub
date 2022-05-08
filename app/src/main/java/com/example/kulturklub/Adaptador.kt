@@ -17,8 +17,7 @@ class Adaptador(var fragmento: Fragment , var lista: MutableList<Evento>, var ac
         var tipo: TextView
         var titulo: TextView
         var ciudad: TextView
-        var fechainicio: TextView
-        var fechafin: TextView
+        var fechas: TextView
 
 
         var botonEdit : ImageView
@@ -30,8 +29,7 @@ class Adaptador(var fragmento: Fragment , var lista: MutableList<Evento>, var ac
             tipo = v.findViewById(R.id.tipo)
             titulo = v.findViewById(R.id.Titulo)
             ciudad = v.findViewById(R.id.ciudad)
-            fechainicio = v.findViewById(R.id.fechainicio)
-            fechafin = v.findViewById(R.id.fechafin)
+            fechas = v.findViewById(R.id.fechas)
             botonEdit = v.findViewById(R.id.editIcon)
             botonDelete = v.findViewById(R.id.deleteIcon)
             v.setOnClickListener(){
@@ -54,9 +52,12 @@ class Adaptador(var fragmento: Fragment , var lista: MutableList<Evento>, var ac
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.tipo.text = lista[position].tipo
         holder.titulo.text = lista[position].titulo
-        holder.ciudad.text = lista[position].ciudad
-        holder.fechainicio.text = lista[position].fechaInicio
-        holder.fechafin.text = lista[position].fechaFin
+        holder.ciudad.text = lista[position].lugar + " (" + lista[position].ciudad + ")"
+        if (lista[position].fechaFin.equals("")){
+            holder.fechas.text = lista[position].fechaInicio
+        } else {
+            holder.fechas.text = lista[position].fechaInicio + " - " + lista[position].fechaFin
+        }
 
         holder.botonEdit.setOnClickListener(){
             val bundle = bundleOf("id" to position)
