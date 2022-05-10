@@ -1,9 +1,7 @@
 package com.example.kulturklub
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -38,13 +36,22 @@ class ThirdFragment : Fragment() {
 
         miRecyclerView.adapter = Adaptador(this, (activity as MainActivity).modelo.eventos, activity as MainActivity)
 
-        //setHasOptionsMenu(true)
+        setHasOptionsMenu(true)
         activity?.title= "Próximos eventos"
 
         binding.nuevo.setOnClickListener(){
             findNavController().navigate(R.id.action_thirdFragment_to_forthFragment)
         }
     }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        menu.findItem(R.id.miUsuario)?.isVisible = true
+        menu.findItem(R.id.organizador)?.isVisible = false
+        menu.findItem(R.id.logout)?.isVisible = true
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

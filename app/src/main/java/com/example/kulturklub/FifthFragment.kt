@@ -1,9 +1,7 @@
 package com.example.kulturklub
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -36,7 +34,7 @@ class FifthFragment : Fragment() {
 
         val id: Int = arguments?.getInt("id") ?:-1
 
-        //setHasOptionsMenu(true)
+        setHasOptionsMenu(true)
         activity?.title= "Editar película"
 
         val spinner = binding.editTipoSelect
@@ -109,6 +107,15 @@ class FifthFragment : Fragment() {
         }
 
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        menu.findItem(R.id.miUsuario)?.isVisible = false
+        menu.findItem(R.id.organizador)?.isVisible = false
+        menu.findItem(R.id.logout)?.isVisible = true
+    }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

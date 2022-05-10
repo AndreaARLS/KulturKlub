@@ -1,10 +1,8 @@
 package com.example.kulturklub
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.example.kulturklub.databinding.FragmentSixthBinding
 
 /**
@@ -33,7 +31,7 @@ class SixthFragment : Fragment() {
 
         val id: Int = arguments?.getInt("id") ?:-1
 
-        //setHasOptionsMenu(true)
+        setHasOptionsMenu(true)
         activity?.title= "Detalles de evento"
 
         val titulo = binding.detalleNombre
@@ -51,6 +49,17 @@ class SixthFragment : Fragment() {
         val descripcion = binding.detalleDescripcion
         descripcion.setText((activity as MainActivity).modelo.eventos[id].descripcion)
     }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        menu.findItem(R.id.miUsuario)?.isVisible = true
+        menu.findItem(R.id.organizador)?.isVisible = true
+        menu.findItem(R.id.logout)?.isVisible = true
+    }
+    
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -1,15 +1,15 @@
 package com.example.kulturklub
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.navigateUp
 import com.example.kulturklub.databinding.FragmentForthBinding
 
 /**
@@ -36,7 +36,7 @@ class ForthFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //setHasOptionsMenu(true)
+        setHasOptionsMenu(true)
         activity?.title= "Nuevo Evento"
 
         val spinner = binding.newTipoSelect
@@ -81,8 +81,16 @@ class ForthFragment : Fragment() {
             findNavController().navigate(R.id.action_forthFragment_to_thirdFragment)
         }
 
-
     }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        menu.findItem(R.id.miUsuario)?.isVisible = false
+        menu.findItem(R.id.organizador)?.isVisible = false
+        menu.findItem(R.id.logout)?.isVisible = true
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

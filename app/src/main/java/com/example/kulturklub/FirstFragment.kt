@@ -1,10 +1,8 @@
 package com.example.kulturklub
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.kulturklub.databinding.FragmentFirstBinding
 
@@ -32,6 +30,7 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setHasOptionsMenu(true)
         activity?.title= "Kultur Klub"
 
         binding.loginButton.setOnClickListener {
@@ -41,6 +40,13 @@ class FirstFragment : Fragment() {
         binding.registerLink.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        menu.findItem(R.id.miUsuario)?.isVisible = false
+        menu.findItem(R.id.organizador)?.isVisible = false
+        menu.findItem(R.id.logout)?.isVisible = false
     }
 
     override fun onDestroyView() {
