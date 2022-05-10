@@ -2,7 +2,9 @@ package com.example.kulturklub
 
 import android.os.Bundle
 import android.view.*
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.kulturklub.databinding.FragmentSixthBinding
 
 /**
@@ -48,6 +50,20 @@ class SixthFragment : Fragment() {
         }
         val descripcion = binding.detalleDescripcion
         descripcion.setText((activity as MainActivity).modelo.eventos[id].descripcion)
+
+
+
+        binding.editIcon3.setOnClickListener(){
+            val bundle = bundleOf("id" to id)
+            this.findNavController().navigate(R.id.action_thirdFragment_to_fifthFragment, bundle)
+        }
+
+        binding.deleteIcon3.setOnClickListener(){
+
+            val bundle = bundleOf("id" to id, "name" to titulo)
+            (activity as MainActivity).popupDelete(bundle)
+
+        }
     }
 
 
@@ -57,7 +73,7 @@ class SixthFragment : Fragment() {
         menu.findItem(R.id.organizador)?.isVisible = true
         menu.findItem(R.id.logout)?.isVisible = true
     }
-    
+
 
 
 
