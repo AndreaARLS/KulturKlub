@@ -54,8 +54,15 @@ class VM: ViewModel() {
 
     }
 
-    fun deletePeli(posicion: Int){
+    fun deleteEvent(posicion: Int){
         eventos.removeAt(posicion)
+    }
+
+    fun editUser(posicion: Int, username: String, email: String, password: String, avatar: String){
+        usuarios[posicion].username = username
+        usuarios[posicion].email = email
+        usuarios[posicion].password = password
+        usuarios[posicion].avatar = avatar
     }
 
 

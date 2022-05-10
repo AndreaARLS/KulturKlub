@@ -60,14 +60,14 @@ class EighthFragment : Fragment() {
 
             if (!name.equals("") && !email.equals("") && !pwd.equals("")){
                 (activity as MainActivity).modelo.editUser(id, name, email,pwd,img)
-                findNavController().navigate(com.example.kulturklub.R.id.action_fifthFragment_to_thirdFragment)
+                findNavController().navigate(R.id.action_eighthFragment_to_seventhFragment)
             }
         }
 
         val botonCancelar = binding.cancelbutton
 
         botonCancelar.setOnClickListener {
-            findNavController().navigate(R.id.action_fifthFragment_to_thirdFragment)
+            findNavController().navigate(R.id.action_eighthFragment_to_seventhFragment)
         }
 
     }

@@ -48,7 +48,7 @@ class SeventhFragment : Fragment() {
 
         binding.editIcon4.setOnClickListener(){
             val bundle = bundleOf("id" to id)
-            this.findNavController().navigate(R.id.action_thirdFragment_to_fifthFragment, bundle)
+            this.findNavController().navigate(R.id.action_seventhFragment_to_eighthFragment, bundle)
         }
 
     }

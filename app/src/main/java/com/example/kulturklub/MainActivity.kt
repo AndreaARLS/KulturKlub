@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         delbutton.setOnClickListener {
-            modelo.deletePeli(id)
+            modelo.deleteEvent(id)
             dialog.hide()
         }
     }

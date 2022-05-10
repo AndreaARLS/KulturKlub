@@ -42,6 +42,9 @@
         <action
             android:id="@+id/action_thirdFragment_to_sixthFragment"
             app:destination="@id/sixthFragment" />
+        <action
+            android:id="@+id/action_thirdFragment_to_seventhFragment"
+            app:destination="@id/seventhFragment" />
     </fragment>
     <fragment
         android:id="@+id/forthFragment"
@@ -69,5 +72,29 @@
         <action
             android:id="@+id/action_sixthFragment_to_thirdFragment"
             app:destination="@id/thirdFragment" />
+        <action
+            android:id="@+id/action_sixthFragment_to_seventhFragment"
+            app:destination="@id/seventhFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/seventhFragment"
+        android:name="com.example.kulturklub.SeventhFragment"
+        android:label="fragment_seven"
+        tools:layout="@layout/fragment_seven" >
+        <action
+            android:id="@+id/action_seventhFragment_to_eighthFragment"
+            app:destination="@id/eighthFragment" />
+        <action
+            android:id="@+id/action_seventhFragment_to_thirdFragment"
+            app:destination="@id/thirdFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eighthFragment"
+        android:name="com.example.kulturklub.EighthFragment"
+        android:label="fragment_eighth"
+        tools:layout="@layout/fragment_eighth" >
+        <action
+            android:id="@+id/action_eighthFragment_to_seventhFragment"
+            app:destination="@id/seventhFragment" />
     </fragment>
 </navigation>
