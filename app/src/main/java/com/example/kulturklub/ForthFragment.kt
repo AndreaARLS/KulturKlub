@@ -68,8 +68,9 @@ class ForthFragment : Fragment() {
             var fechaIni = binding.newFechaInput.text.toString()
             var fechafin = binding.newFechafinInput.text.toString()
             var imgurl = binding.newUrlInput.text.toString()
+            var creator = (activity as MainActivity).currentUser
             if (!titulo.equals("") && !tipo.equals("") && !lugar.equals("") && !ciudad.equals("") && !fechaIni.equals("")){
-                (activity as MainActivity).modelo.nuevoEvent(titulo, tipo, descripcion, lugar, ciudad, fechaIni, fechafin, imgurl)
+                (activity as MainActivity).modelo.nuevoEvent(titulo, tipo, descripcion, lugar, ciudad, fechaIni, fechafin, imgurl, creator)
                 findNavController().navigate(R.id.action_forthFragment_to_thirdFragment)
             }
         }
