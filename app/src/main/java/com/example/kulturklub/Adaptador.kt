@@ -9,6 +9,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 class Adaptador(var fragmento: Fragment , var lista: MutableList<Evento>, var activity : MainActivity) : RecyclerView.Adapter<Adaptador.ViewHolder>() {
 
@@ -18,6 +19,7 @@ class Adaptador(var fragmento: Fragment , var lista: MutableList<Evento>, var ac
         var titulo: TextView
         var ciudad: TextView
         var fechas: TextView
+        var foto: ImageView
 
 
         var botonEdit : ImageView
@@ -30,6 +32,7 @@ class Adaptador(var fragmento: Fragment , var lista: MutableList<Evento>, var ac
             titulo = v.findViewById(R.id.Titulo)
             ciudad = v.findViewById(R.id.ciudad)
             fechas = v.findViewById(R.id.fechas)
+            foto = v.findViewById(R.id.fotoEvento)
             botonEdit = v.findViewById(R.id.editIcon)
             botonDelete = v.findViewById(R.id.deleteIcon)
             v.setOnClickListener(){
@@ -61,6 +64,7 @@ class Adaptador(var fragmento: Fragment , var lista: MutableList<Evento>, var ac
         } else {
             holder.fechas.text = lista[position].fechaInicio + " - " + lista[position].fechaFin
         }
+        Glide.with(activity).load(activity.modelo.eventos[position].foto).into(holder.foto)
 
 
         holder.botonEdit.setOnClickListener(){

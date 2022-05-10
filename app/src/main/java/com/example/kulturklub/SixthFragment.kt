@@ -5,6 +5,7 @@ import android.view.*
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.kulturklub.databinding.FragmentSixthBinding
 
 /**
@@ -50,6 +51,8 @@ class SixthFragment : Fragment() {
         }
         val descripcion = binding.detalleDescripcion
         descripcion.setText((activity as MainActivity).modelo.eventos[id].descripcion)
+        val imagen = binding.imageEvento
+        Glide.with(this).load((activity as MainActivity).modelo.eventos[id].foto).into(imagen)
 
 
 
