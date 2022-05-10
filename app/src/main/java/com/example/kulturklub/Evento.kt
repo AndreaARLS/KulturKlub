@@ -8,6 +8,7 @@ class Evento (
     var ciudad: String,
     var fechaInicio:String,
     var fechaFin:String,
-    var foto: String
+    var foto: String,
+    var creador : Int
     ){
 }
