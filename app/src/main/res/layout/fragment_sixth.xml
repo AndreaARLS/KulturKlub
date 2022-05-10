@@ -23,69 +23,101 @@
             android:orientation="vertical">
 
 
-            <ImageView
-                android:id="@+id/imageProducto"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:scaleType="centerCrop"
-                android:visibility="visible"
-                app:srcCompat="@drawable/teatro_cervantes_de_almeria" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/detalleNombre"
+                <ImageView
+                    android:id="@+id/imageProducto"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:visibility="visible"
+                    app:srcCompat="@drawable/teatro_cervantes_de_almeria" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right|center_horizontal|end"
+                    android:layout_marginTop="-40dp"
+                    android:layout_marginEnd="20dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/editIcon3"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_weight="1"
+                        android:contentDescription="TODO"
+                        android:maxWidth="10dp"
+                        android:minWidth="10dp"
+                        app:srcCompat="@drawable/edit" />
+
+                    <ImageView
+                        android:id="@+id/deleteIcon3"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/delete" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:fontFamily="sans-serif-black"
-                android:text="@string/titulo"
-                android:textAlignment="textStart"
-                android:textColor="@color/text_color"
-                android:textSize="28sp" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/detalleTipo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_weight="1"
-                android:text="@string/tipo"
-                android:textColor="@color/purple_200"
-                android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/detalleNombre"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/titulo"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/text_color"
+                    android:textSize="28sp" />
 
-            <TextView
-                android:id="@+id/detalleLugarCiudad"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_weight="1"
-                android:text="@string/lugar"
-                android:textSize="18sp"/>
+                <TextView
+                    android:id="@+id/detalleLugarCiudad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/lugar"
+                    android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/detalleFechas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:text="@string/fecha"
-                android:textSize="18sp"/>
+                <TextView
+                    android:id="@+id/detalleTipo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/tipo"
+                    android:textColor="@color/purple_200"
+                    android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/detalleDescripcion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:fontFamily="sans-serif"
-                android:text="@string/descripcion"
-                android:textColor="@color/text_color"
-                android:textSize="16sp"
-                app:lineHeight="24sp" />
+                <TextView
+                    android:id="@+id/detalleFechas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fecha"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/detalleDescripcion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="sans-serif"
+                    android:text="@string/descripcion"
+                    android:textColor="@color/text_color"
+                    android:textSize="16sp"
+                    app:lineHeight="24sp" />
+            </LinearLayout>
 
 
         </LinearLayout>
