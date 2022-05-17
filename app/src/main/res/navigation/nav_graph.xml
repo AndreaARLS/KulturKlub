@@ -45,6 +45,9 @@
         <action
             android:id="@+id/action_thirdFragment_to_seventhFragment"
             app:destination="@id/seventhFragment" />
+        <action
+            android:id="@+id/action_thirdFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
     </fragment>
     <fragment
         android:id="@+id/forthFragment"
@@ -54,6 +57,9 @@
         <action
             android:id="@+id/action_forthFragment_to_thirdFragment"
             app:destination="@id/thirdFragment" />
+        <action
+            android:id="@+id/action_forthFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
     </fragment>
     <fragment
         android:id="@+id/fifthFragment"
@@ -63,6 +69,9 @@
         <action
             android:id="@+id/action_fifthFragment_to_thirdFragment"
             app:destination="@id/thirdFragment" />
+        <action
+            android:id="@+id/action_fifthFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
     </fragment>
     <fragment
         android:id="@+id/sixthFragment"
@@ -75,6 +84,9 @@
         <action
             android:id="@+id/action_sixthFragment_to_seventhFragment"
             app:destination="@id/seventhFragment" />
+        <action
+            android:id="@+id/action_sixthFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
     </fragment>
     <fragment
         android:id="@+id/seventhFragment"
@@ -87,6 +99,9 @@
         <action
             android:id="@+id/action_seventhFragment_to_thirdFragment"
             app:destination="@id/thirdFragment" />
+        <action
+            android:id="@+id/action_seventhFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
     </fragment>
     <fragment
         android:id="@+id/eighthFragment"
@@ -96,5 +111,8 @@
         <action
             android:id="@+id/action_eighthFragment_to_seventhFragment"
             app:destination="@id/seventhFragment" />
+        <action
+            android:id="@+id/action_eighthFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
     </fragment>
 </navigation>

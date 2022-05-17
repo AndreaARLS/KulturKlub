@@ -1,6 +1,7 @@
 package com.example.kulturklub
 import android.os.Bundle
 import android.view.*
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -51,6 +52,17 @@ class ThirdFragment : Fragment() {
         menu.findItem(R.id.organizador)?.isVisible = false
         menu.findItem(R.id.logout)?.isVisible = true
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val bundle1 = bundleOf("id" to (activity as MainActivity).currentUser)
+        when (item.itemId) {
+            R.id.miUsuario -> findNavController().navigate(R.id.action_thirdFragment_to_seventhFragment, bundle1)
+            R.id.organizador -> true
+            R.id.logout -> findNavController().navigate(R.id.action_thirdFragment_to_FirstFragment)
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 
 
     override fun onDestroyView() {

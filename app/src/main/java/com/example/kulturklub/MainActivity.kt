@@ -10,6 +10,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.core.os.bundleOf
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.kulturklub.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -45,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        val bundle = bundleOf("id" to currentUser)
         return when (item.itemId) {
             R.id.miUsuario -> true
             R.id.organizador -> true
@@ -53,11 +57,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
+
+
 
     fun popupDelete(bundle: Bundle){
         val name: String = bundle.getString("name") ?:""
