@@ -7,6 +7,12 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+    <!-- String used to set connect Parse -->
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+    <string name="back4app_app_id">ISzmWVO0ecBTy5p5GDFcqSFdaJIlCWEK5KhKYUT6</string>
+    <string name="back4app_client_key">xCkg2JpKwO2XryYMhuEqlab4EEu5GqPsfMXse6XJ</string>
+
+    <!-- Text strings -->
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="Login">Log in</string>
