@@ -35,7 +35,14 @@ class SecondFragment : Fragment() {
 
 
         binding.registerButton.setOnClickListener {
-            //findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+            var name = binding.usernameInput.text.toString()
+            var email = binding.imageInput.text.toString()
+            var pwd = binding.emailInput.text.toString()
+            var avatar = binding.passwordInput.text.toString()
+            if (!name.equals("") && !email.equals("") && !pwd.equals("")){
+                (activity as MainActivity).modelo.nuevoUser(name, email, pwd, avatar, (activity as MainActivity))
+                findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+            }
         }
 
         binding.loginLink.setOnClickListener {

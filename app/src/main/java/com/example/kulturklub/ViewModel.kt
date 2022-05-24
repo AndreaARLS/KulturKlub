@@ -19,8 +19,8 @@ class VM: ViewModel() {
     var event9 = Evento("La M.O.D.A.", "CONCIERTO", "Garage rock, punk rock, postpunk music. Tercera gira de The Hives por España y segundo concierto en Vitoria-Gasteiz. Entradas a la venta en ticketmaster.com", "Sala Kubik", "Vitoria-Gasteiz", "28/08/2022", "", "https://www.alohacriticon.com/wp-content/uploads/2004/07/the-hives-discografia-t-suecia.jpg",1)
     var event10 = Evento("Quartet Tarantino", "CONCIERTO", "Garage rock, punk rock, postpunk music. Tercera gira de The Hives por España y segundo concierto en Vitoria-Gasteiz. Entradas a la venta en ticketmaster.com", "Sala Kubik", "Vitoria-Gasteiz", "28/08/2022", "", "https://www.alohacriticon.com/wp-content/uploads/2004/07/the-hives-discografia-t-suecia.jpg",1)
 
-    var user1 = Usuario(1,"Admin", "admin@example.org", "1234", "https://i0.wp.com/codigoespagueti.com/wp-content/uploads/2020/11/Sin-titulo362.jpg?fit=1280%2C720&quality=80&ssl=1")
-    var user2 = Usuario(2,"Tester", "tester@example.org", "1234", "https://i.pinimg.com/474x/15/e1/90/15e190a1ca7d6e5e3c6583821ca7455e--adventure-time-memes.jpg")
+    var user1 = Usuario("Admin", "admin@example.org", "1234", "https://i0.wp.com/codigoespagueti.com/wp-content/uploads/2020/11/Sin-titulo362.jpg?fit=1280%2C720&quality=80&ssl=1")
+    var user2 = Usuario("Tester", "tester@example.org", "1234", "https://i.pinimg.com/474x/15/e1/90/15e190a1ca7d6e5e3c6583821ca7455e--adventure-time-memes.jpg")
 
 
     init{
@@ -40,9 +40,9 @@ class VM: ViewModel() {
     }
 
 
+    ///  FUNCIONES EVENTO
     fun nuevoEvent(titulo: String, tipo: String, descripcion: String, lugar: String, ciudad: String, fechainicio: String, fechafin: String, url: String, creador : Int, actividad : MainActivity){
         val newevento = Evento(titulo, tipo, descripcion, lugar, ciudad, fechainicio, fechafin, url, creador)
-        //eventos.add(newevento)
         val firstObject = ParseObject("Evento")
         firstObject.put("titulo", newevento.titulo)
         firstObject.put("tipo", newevento.tipo)
@@ -78,6 +78,28 @@ class VM: ViewModel() {
 
     fun deleteEvent(posicion: Int){
         eventos.removeAt(posicion)
+    }
+
+
+
+
+    /// FUCNIONES USUARIOS
+
+    fun nuevoUser(name: String, email: String, password: String, avatar: String, actividad : MainActivity){
+        val newUsuario = Usuario(name, email, password, avatar)
+        val firstObject = ParseObject("Usuario")
+        firstObject.put("name", newUsuario.username)
+        firstObject.put("email", newUsuario.email)
+        firstObject.put("password", newUsuario.password)
+        firstObject.put("avatar", newUsuario.avatar)
+        firstObject.saveInBackground{
+            if (it != null){
+                it.localizedMessage?.let { message ->
+                    Toast.makeText(actividad, "Algo ha salido mal. No hemos podido registrarte.", Toast.LENGTH_LONG).show()}
+            } else {
+                Toast.makeText(actividad, "Usuario creado", Toast.LENGTH_LONG ).show()
+            }
+        }
     }
 
     fun editUser(posicion: Int, username: String, email: String, password: String, avatar: String){
