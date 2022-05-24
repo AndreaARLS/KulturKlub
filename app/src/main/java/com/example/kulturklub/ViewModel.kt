@@ -1,5 +1,8 @@
 package com.example.kulturklub
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
+import com.parse.ParseObject
 
 class VM: ViewModel() {
     var eventos : MutableList<Evento> = mutableListOf()
@@ -37,10 +40,29 @@ class VM: ViewModel() {
     }
 
 
-    fun nuevoEvent(titulo: String, tipo: String, descripcion: String, lugar: String, ciudad: String, fechainicio: String, fechafin: String, url: String, creador : Int){
+    fun nuevoEvent(titulo: String, tipo: String, descripcion: String, lugar: String, ciudad: String, fechainicio: String, fechafin: String, url: String, creador : Int, actividad : MainActivity){
         val newevento = Evento(titulo, tipo, descripcion, lugar, ciudad, fechainicio, fechafin, url, creador)
-        eventos.add(newevento)
-    }
+        //eventos.add(newevento)
+        val firstObject = ParseObject("Evento")
+        firstObject.put("titulo", newevento.titulo)
+        firstObject.put("tipo", newevento.tipo)
+        firstObject.put("descripcion", newevento.descripcion)
+        firstObject.put("lugar", newevento.lugar)
+        firstObject.put("ciudad", newevento.ciudad)
+        firstObject.put("fechainicio", newevento.fechaInicio)
+        firstObject.put("fechafin", newevento.fechaFin)
+        firstObject.put("foto", newevento.foto)
+        firstObject.put("creador", newevento.creador)
+        firstObject.saveInBackground{
+            if (it != null){
+                it.localizedMessage?.let { message ->
+                    Toast.makeText(actividad, "Algo ha salido mal. No hemos podido guardar el evento.", Toast.LENGTH_LONG).show()}
+                } else {
+                    Toast.makeText(actividad, "Evento guardado", Toast.LENGTH_LONG ).show()
+                }
+            }
+        }
+
 
     fun editEvent(posicion: Int, titulo: String, tipo: String, descripcion: String, lugar: String, ciudad: String, fechainicio: String, fechafin: String, url: String){
         eventos[posicion].titulo = titulo

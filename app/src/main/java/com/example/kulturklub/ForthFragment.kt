@@ -71,7 +71,7 @@ class ForthFragment : Fragment() {
             var imgurl = binding.newUrlInput.text.toString()
             var creator = (activity as MainActivity).currentUser
             if (!titulo.equals("") && !tipo.equals("") && !lugar.equals("") && !ciudad.equals("") && !fechaIni.equals("")){
-                (activity as MainActivity).modelo.nuevoEvent(titulo, tipo, descripcion, lugar, ciudad, fechaIni, fechafin, imgurl, creator)
+                (activity as MainActivity).modelo.nuevoEvent(titulo, tipo, descripcion, lugar, ciudad, fechaIni, fechafin, imgurl, creator, (activity as MainActivity))
                 findNavController().navigate(R.id.action_forthFragment_to_thirdFragment)
             }
         }
