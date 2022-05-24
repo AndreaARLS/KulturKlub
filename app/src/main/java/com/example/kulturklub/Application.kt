@@ -1,9 +1,7 @@
 package com.example.kulturklub
 
 import android.app.Application
-import android.util.Log
 import com.parse.Parse
-import com.parse.ParseObject
 
 
 public class App : Application() {

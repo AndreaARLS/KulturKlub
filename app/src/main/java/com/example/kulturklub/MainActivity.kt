@@ -21,7 +21,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     var titulin: String = "KulturKlub"
     val modelo : VM by viewModels()
-    var currentUser : Int = 1
+    var currentUser : Int = 0
+    var usermenu = R.id.miUsuario
+    var creatormenu = R.id.organizador
+    var logoutmenu = R.id.logout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,18 +47,18 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         val bundle = bundleOf("id" to currentUser)
         return when (item.itemId) {
-            R.id.miUsuario -> true
-            R.id.organizador -> true
-            R.id.logout -> true
+            usermenu -> true
+            creatormenu -> true
+            logoutmenu -> true
             else -> super.onOptionsItemSelected(item)
         }
-    }
+    }*/
 
 
 

@@ -1,5 +1,6 @@
 package com.example.kulturklub
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -48,20 +49,21 @@ class ThirdFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        menu.findItem(R.id.miUsuario)?.isVisible = true
-        menu.findItem(R.id.organizador)?.isVisible = false
-        menu.findItem(R.id.logout)?.isVisible = true
+        menu.findItem((activity as MainActivity).usermenu)?.isVisible = true
+        menu.findItem((activity as MainActivity).creatormenu)?.isVisible = false
+        menu.findItem((activity as MainActivity).logoutmenu)?.isVisible = true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val bundle1 = bundleOf("id" to (activity as MainActivity).currentUser)
         when (item.itemId) {
-            R.id.miUsuario -> findNavController().navigate(R.id.action_thirdFragment_to_seventhFragment, bundle1)
-            R.id.organizador -> true
-            R.id.logout -> findNavController().navigate(R.id.action_thirdFragment_to_FirstFragment)
+            (activity as MainActivity).usermenu -> findNavController().navigate(R.id.action_thirdFragment_to_seventhFragment, bundle1)
+            (activity as MainActivity).creatormenu -> false
+            (activity as MainActivity).logoutmenu -> findNavController().navigate(R.id.action_thirdFragment_to_FirstFragment)
         }
         return super.onOptionsItemSelected(item)
     }
+
 
 
 

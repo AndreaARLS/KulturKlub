@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.example.kulturklub.databinding.FragmentEighthBinding
 
@@ -74,9 +75,16 @@ class EighthFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        menu.findItem(R.id.miUsuario)?.isVisible = false
-        menu.findItem(R.id.organizador)?.isVisible = false
-        menu.findItem(R.id.logout)?.isVisible = true
+        menu.findItem((activity as MainActivity).usermenu)?.isVisible = false
+        menu.findItem((activity as MainActivity).creatormenu)?.isVisible = false
+        menu.findItem((activity as MainActivity).logoutmenu)?.isVisible = true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            (activity as MainActivity).logoutmenu -> findNavController().navigate(R.id.action_eighthFragment_to_FirstFragment)
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 

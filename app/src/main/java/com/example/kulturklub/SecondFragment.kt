@@ -45,9 +45,9 @@ class SecondFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        menu.findItem(R.id.miUsuario)?.isVisible = false
-        menu.findItem(R.id.organizador)?.isVisible = false
-        menu.findItem(R.id.logout)?.isVisible = false
+        menu.findItem((activity as MainActivity).usermenu)?.isVisible = false
+        menu.findItem((activity as MainActivity).creatormenu)?.isVisible = false
+        menu.findItem((activity as MainActivity).logoutmenu)?.isVisible = false
     }
 
     override fun onDestroyView() {

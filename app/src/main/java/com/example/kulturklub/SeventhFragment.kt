@@ -15,6 +15,7 @@ import com.example.kulturklub.databinding.FragmentSevenBinding
 class SeventhFragment : Fragment() {
 
     private var _binding: FragmentSevenBinding? = null
+    var idUser = -1
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -33,21 +34,21 @@ class SeventhFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val id: Int = arguments?.getInt("id") ?:-1
+        idUser = arguments?.getInt("id") ?:-1
 
         setHasOptionsMenu(true)
         activity?.title= "Detalles de usuario"
 
         val username = binding.userNombre
-        username.setText((activity as MainActivity).modelo.usuarios[id].username)
+        username.setText((activity as MainActivity).modelo.usuarios[idUser].username)
         val email = binding.userEmail
-        email.setText((activity as MainActivity).modelo.usuarios[id].email)
+        email.setText((activity as MainActivity).modelo.usuarios[idUser].email)
         val avatar = binding.imageUsuario
-        Glide.with(this).load((activity as MainActivity).modelo.usuarios[id].avatar).into(avatar)
+        Glide.with(this).load((activity as MainActivity).modelo.usuarios[idUser].avatar).into(avatar)
 
 
         binding.editIcon4.setOnClickListener(){
-            val bundle = bundleOf("id" to id)
+            val bundle = bundleOf("id" to idUser)
             this.findNavController().navigate(R.id.action_seventhFragment_to_eighthFragment, bundle)
         }
 
@@ -56,12 +57,19 @@ class SeventhFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        menu.findItem(R.id.miUsuario)?.isVisible = true
-        menu.findItem(R.id.organizador)?.isVisible = true
-        menu.findItem(R.id.logout)?.isVisible = true
+        menu.findItem((activity as MainActivity).usermenu)?.isVisible = true
+        menu.findItem((activity as MainActivity).creatormenu)?.isVisible = false
+        menu.findItem((activity as MainActivity).logoutmenu)?.isVisible = true
     }
 
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val bundle1 = bundleOf("id" to (activity as MainActivity).currentUser)
+        when (item.itemId) {
+            (activity as MainActivity).usermenu -> findNavController().navigate(R.id.action_seventhFragment_self, bundle1)
+            (activity as MainActivity).logoutmenu -> findNavController().navigate(R.id.action_seventhFragment_to_FirstFragment)
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
 
     override fun onDestroyView() {

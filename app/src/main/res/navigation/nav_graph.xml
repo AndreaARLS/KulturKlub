@@ -102,6 +102,9 @@
         <action
             android:id="@+id/action_seventhFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_seventhFragment_self"
+            app:destination="@id/seventhFragment" />
     </fragment>
     <fragment
         android:id="@+id/eighthFragment"
