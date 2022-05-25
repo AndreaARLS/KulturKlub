@@ -36,7 +36,9 @@ class ThirdFragment : Fragment() {
         miRecyclerView = binding.recycler
         miRecyclerView.layoutManager = LinearLayoutManager(activity)
 
-        miRecyclerView.adapter = Adaptador(this, (activity as MainActivity).modelo.eventos, activity as MainActivity)
+        val lista = (activity as MainActivity).modelo.consultarEventos()
+
+        miRecyclerView.adapter = Adaptador(this, lista, activity as MainActivity)
 
         setHasOptionsMenu(true)
         activity?.title= "Próximos eventos"
@@ -76,7 +78,9 @@ class ThirdFragment : Fragment() {
         miRecyclerView = binding.recycler
         miRecyclerView.layoutManager = LinearLayoutManager(activity)
 
-        miRecyclerView.adapter = Adaptador(this, (activity as MainActivity).modelo.eventos, activity as MainActivity)
+        val lista = (activity as MainActivity).modelo.consultarEventos()
+
+        miRecyclerView.adapter = Adaptador(this, lista, activity as MainActivity)
 
     }
 }

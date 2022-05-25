@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class Adaptador(var fragmento: Fragment , var lista: MutableList<Evento>, var activity : MainActivity) : RecyclerView.Adapter<Adaptador.ViewHolder>() {
+class Adaptador(var fragmento: Fragment , var eventos: MutableList<MutableList<String>>, var activity : MainActivity) : RecyclerView.Adapter<Adaptador.ViewHolder>() {
 
 
     inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
@@ -25,7 +25,7 @@ class Adaptador(var fragmento: Fragment , var lista: MutableList<Evento>, var ac
         var botonEdit : ImageView
         var botonDelete : ImageView
 
-        var posicion= -1
+        var posicion = -1
 
         init {
             tipo = v.findViewById(R.id.tipo)
@@ -36,7 +36,7 @@ class Adaptador(var fragmento: Fragment , var lista: MutableList<Evento>, var ac
             botonEdit = v.findViewById(R.id.editIcon)
             botonDelete = v.findViewById(R.id.deleteIcon)
             v.setOnClickListener(){
-                val miBundle: Bundle = bundleOf("id" to this.position)
+                val miBundle: Bundle = bundleOf("id" to this.posicion)
                 fragmento.findNavController().navigate(R.id.action_thirdFragment_to_sixthFragment, miBundle)
             }
         }
@@ -52,19 +52,19 @@ class Adaptador(var fragmento: Fragment , var lista: MutableList<Evento>, var ac
     }
 
     override fun getItemCount(): Int {
-        return 10
+        return eventos.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tipo.text = lista[position].tipo
-        holder.titulo.text = lista[position].titulo
-        holder.ciudad.text = lista[position].lugar + " (" + lista[position].ciudad + ")"
-        if (lista[position].fechaFin.equals("")){
-            holder.fechas.text = lista[position].fechaInicio
+        holder.tipo.text = eventos[position][2]
+        holder.titulo.text = eventos[position][1]
+        holder.ciudad.text = eventos[position][5] + " (" + eventos[position][4] + ")"
+        if (eventos[position][7].equals("")){
+            holder.fechas.text = eventos[position][6]
         } else {
-            holder.fechas.text = lista[position].fechaInicio + " - " + lista[position].fechaFin
+            holder.fechas.text = eventos[position][6] + " - " + eventos[position][7]
         }
-        Glide.with(activity).load(activity.modelo.eventos[position].foto).into(holder.foto)
+        Glide.with(activity).load(eventos[position][8]).into(holder.foto)
 
 
         holder.botonEdit.setOnClickListener(){
@@ -74,10 +74,13 @@ class Adaptador(var fragmento: Fragment , var lista: MutableList<Evento>, var ac
 
         holder.botonDelete.setOnClickListener(){
 
-            val bundle = bundleOf("id" to position, "name" to lista[position].titulo)
+            val bundle = bundleOf("id" to eventos[position][0], "name" to eventos[position][1])
             activity.popupDelete(bundle)
 
         }
+
+
+
 
     }
 

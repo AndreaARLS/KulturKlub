@@ -17,6 +17,9 @@ class FifthFragment : Fragment() {
     private var _binding: FragmentFifthBinding? = null
     private val binding get() = _binding!!
 
+    var eventid : String = ""
+    var evento : MutableList<String> = mutableListOf()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +36,13 @@ class FifthFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val id: Int = arguments?.getInt("id") ?:-1
+        eventid = arguments?.getString("id")?: ""
+        var eventos : MutableList<MutableList<String>> = (activity as MainActivity).modelo.consultarEventos()
+        for (i in eventos){
+            if (i[0].equals("eventid")){
+                evento = i
+            }
+        }
 
         setHasOptionsMenu(true)
         activity?.title= "Editar película"
@@ -57,29 +66,29 @@ class FifthFragment : Fragment() {
         }
 
         val titulo = binding.editTituloInput
-        titulo.setText((activity as MainActivity).modelo.eventos[id].titulo)
+        titulo.setText(evento[1])
         val tipo = binding.editTipoSelect
         var pos = 0
-        if ((activity as MainActivity).modelo.eventos[id].tipo == "CONCIERTO") {
+        if (evento[2] == "CONCIERTO") {
             pos = 0
-        } else if ((activity as MainActivity).modelo.eventos[id].tipo == "CICLO DE CINE"){
+        } else if (evento[2] == "CICLO DE CINE"){
             pos = 1
         } else {
             pos = 2
         }
         tipo.setSelection(pos)
         val descripcion = binding.editDescripcionInput
-        descripcion.setText((activity as MainActivity).modelo.eventos[id].descripcion)
+        descripcion.setText(evento[3])
         val lugar = binding.editLugarInput
-        lugar.setText((activity as MainActivity).modelo.eventos[id].lugar)
+        lugar.setText(evento[4])
         val ciudad = binding.editCiudadInput
-        ciudad.setText((activity as MainActivity).modelo.eventos[id].ciudad)
+        ciudad.setText(evento[5])
         val fechaI = binding.editFechaInput
-        fechaI.setText((activity as MainActivity).modelo.eventos[id].fechaInicio)
+        fechaI.setText(evento[6])
         val fechaF = binding.editFechafinInput
-        fechaF.setText((activity as MainActivity).modelo.eventos[id].fechaFin)
+        fechaF.setText(evento[7])
         val url = binding.editUrlInput
-        url.setText((activity as MainActivity).modelo.eventos[id].foto)
+        url.setText(evento[8])
 
 
 
@@ -96,7 +105,7 @@ class FifthFragment : Fragment() {
             var fechaFin = binding.editFechafinInput.text.toString()
             var imagen = binding.editUrlInput.text.toString()
             if (!titulo.equals("") && !tipo.equals("") && !lugar.equals("") && !ciudad.equals("") && !fechaInicio.equals("")){
-                (activity as MainActivity).modelo.editEvent(id, titulo, tipo, descripcion, lugar, ciudad, fechaInicio, fechaFin, imagen)
+                (activity as MainActivity).modelo.editEvent(evento[0], titulo, tipo, descripcion, lugar, ciudad, fechaInicio, fechaFin, imagen, activity as MainActivity)
                 findNavController().navigate(com.example.kulturklub.R.id.action_fifthFragment_to_thirdFragment)
             }
         }

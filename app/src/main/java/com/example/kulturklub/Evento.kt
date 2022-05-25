@@ -9,6 +9,6 @@ class Evento (
     var fechaInicio:String,
     var fechaFin:String,
     var foto: String,
-    var creador : Int
+    var creador : String
     ){
 }

@@ -7,12 +7,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import android.view.Menu
-import android.view.MenuItem
 import android.widget.TextView
 import androidx.activity.viewModels
-import androidx.core.os.bundleOf
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import com.example.kulturklub.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     var titulin: String = "KulturKlub"
     val modelo : VM by viewModels()
-    var currentUser : Int = 0
+    var currentUser : String = "adr5jfWfJz"
     var usermenu = R.id.miUsuario
     var creatormenu = R.id.organizador
     var logoutmenu = R.id.logout
@@ -47,18 +43,6 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        val bundle = bundleOf("id" to currentUser)
-        return when (item.itemId) {
-            usermenu -> true
-            creatormenu -> true
-            logoutmenu -> true
-            else -> super.onOptionsItemSelected(item)
-        }
-    }*/
 
 
 
@@ -72,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
     fun popupDelete(bundle: Bundle){
         val name: String = bundle.getString("name") ?:""
-        val id: Int = bundle.getInt("id") ?:-1
+        val id: String = bundle.getString("id") ?: ""
         val builder = AlertDialog.Builder(this)
         val view = layoutInflater.inflate(R.layout.deletepopup, null)
 
@@ -90,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         delbutton.setOnClickListener {
-            modelo.deleteEvent(id)
+            //modelo.deleteEvent(id)
             dialog.hide()
         }
     }
