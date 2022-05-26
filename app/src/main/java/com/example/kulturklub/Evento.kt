@@ -1,6 +1,7 @@
 package com.example.kulturklub
 
 class Evento (
+    var id:String,
     var titulo:String,
     var tipo: String,
     var descripcion: String,

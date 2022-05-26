@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class Adaptador(var fragmento: Fragment , var eventos: MutableList<MutableList<String>>, var activity : MainActivity) : RecyclerView.Adapter<Adaptador.ViewHolder>() {
+class Adaptador(var fragmento: Fragment , var eventos: MutableList<Evento>, var activity : MainActivity) : RecyclerView.Adapter<Adaptador.ViewHolder>() {
 
 
     inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
@@ -56,15 +56,15 @@ class Adaptador(var fragmento: Fragment , var eventos: MutableList<MutableList<S
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tipo.text = eventos[position][2]
-        holder.titulo.text = eventos[position][1]
-        holder.ciudad.text = eventos[position][5] + " (" + eventos[position][4] + ")"
-        if (eventos[position][7].equals("")){
-            holder.fechas.text = eventos[position][6]
+        holder.tipo.text = eventos[position].tipo
+        holder.titulo.text = eventos[position].titulo
+        holder.ciudad.text = eventos[position].lugar + " (" + eventos[position].ciudad + ")"
+        if (eventos[position].fechaFin.equals("")){
+            holder.fechas.text = eventos[position].fechaInicio
         } else {
-            holder.fechas.text = eventos[position][6] + " - " + eventos[position][7]
+            holder.fechas.text = eventos[position].fechaInicio + " - " + eventos[position].fechaFin
         }
-        Glide.with(activity).load(eventos[position][8]).into(holder.foto)
+        Glide.with(activity).load(eventos[position].foto).into(holder.foto)
 
 
         holder.botonEdit.setOnClickListener(){
@@ -74,7 +74,7 @@ class Adaptador(var fragmento: Fragment , var eventos: MutableList<MutableList<S
 
         holder.botonDelete.setOnClickListener(){
 
-            val bundle = bundleOf("id" to eventos[position][0], "name" to eventos[position][1])
+            val bundle = bundleOf("id" to eventos[position].id, "name" to eventos[position].titulo)
             activity.popupDelete(bundle)
 
         }

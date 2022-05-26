@@ -21,7 +21,7 @@ class SixthFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     var eventid : String = ""
-    var evento : MutableList<String> = mutableListOf()
+    lateinit var evento : Evento
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,9 +37,9 @@ class SixthFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         eventid = arguments?.getString("id")?: ""
-        var eventos : MutableList<MutableList<String>> = (activity as MainActivity).modelo.consultarEventos()
+        var eventos : MutableList<Evento> = (activity as MainActivity).modelo.consultarEventos()
         for (i in eventos){
-            if (i[0].equals("eventid")){
+            if (i.id.equals("eventid")){
                 evento = i
             }
         }
@@ -49,21 +49,21 @@ class SixthFragment : Fragment() {
         activity?.title= "Detalles de evento"
 
         val titulo = binding.detalleNombre
-        titulo.setText(evento[1])
+        titulo.setText(evento.titulo)
         val tipo = binding.detalleTipo
-        tipo.setText(evento[2])
+        tipo.setText(evento.tipo)
         val lugar = binding.detalleLugarCiudad
-        lugar.setText(evento[4] + " (" + evento[5] +")" )
+        lugar.setText(evento.lugar + " (" + evento.ciudad +")" )
         val fechas = binding.detalleFechas
-        if (evento[7].equals("")){
-            fechas.setText(evento[6])
+        if (evento.fechaFin.equals("")){
+            fechas.setText(evento.fechaInicio)
         } else {
-            fechas.setText(evento[6] + " - " + evento[7])
+            fechas.setText(evento.fechaInicio + " - " + evento.fechaFin)
         }
         val descripcion = binding.detalleDescripcion
-        descripcion.setText(evento[3])
+        descripcion.setText(evento.descripcion)
         val imagen = binding.imageEvento
-        Glide.with(this).load(evento[8]).into(imagen)
+        Glide.with(this).load(evento.foto).into(imagen)
 
 
 
@@ -90,7 +90,7 @@ class SixthFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val bundle1 = bundleOf("id" to (activity as MainActivity).currentUser)
-        val bundle2 = bundleOf("id" to (evento[0]))
+        val bundle2 = bundleOf("id" to (evento.id))
         when (item.itemId) {
             (activity as MainActivity).usermenu -> findNavController().navigate(R.id.action_sixthFragment_to_seventhFragment, bundle1)
             (activity as MainActivity).creatormenu -> {

@@ -6,7 +6,7 @@ import com.parse.ParseObject
 import com.parse.ParseQuery
 
 class VM: ViewModel() {
-    var eventos : MutableList<MutableList<String>> = mutableListOf()
+
     var usuarios : MutableList<Usuario> = mutableListOf()
 
     /*var event1 = Evento("The Hives", "CONCIERTO", "Garage rock, punk rock, postpunk music. Tercera gira de The Hives por España y segundo concierto en Vitoria-Gasteiz. Entradas a la venta en ticketmaster.com", "Sala Kubik", "Vitoria-Gasteiz", "28/08/2022", "", "https://m.media-amazon.com/images/I/71RTSRlqvnL._SY355_.jpg",2)
@@ -41,46 +41,42 @@ class VM: ViewModel() {
 
 
     ///  FUNCIONES EVENTO
-    fun consultarEventos(): MutableList<MutableList<String>>{
+    fun consultarEventos(): MutableList<Evento> {
+        var eventos: MutableList<Evento> = mutableListOf()
         val query = ParseQuery.getQuery<ParseObject>("Evento")
         query.orderByAscending("fechainicio")
-        query.findInBackground{ objects, e->
-            if (e == null){
-                for (i in objects){
-                    var event : MutableList<String> = mutableListOf()
-                    i.getString("objectId")?.let{event.add(it)}
-                    i.getString("titulo")?.let{event.add(it)}
-                    i.getString("tipo")?.let{event.add(it)}
-                    i.getString("descripcion")?.let{event.add(it)}
-                    i.getString("lugar")?.let{event.add(it)}
-                    i.getString("ciudad")?.let{event.add(it)}
-                    i.getString("fechaInicio")?.let{event.add(it)}
-                    i.getString("fechaFin")?.let{event.add(it)}
-                    i.getString("foto")?.let{event.add(it)}
-                    i.getString("creador")?.let{event.add(it)}
-                    eventos.add(event)
-                    Log.d("EVENTO", event.toString())
-                }
-                Log.d("LISTA EVENTOS 1", eventos.toString())
-            }
+        val lista = query.find()
+        for (i in lista) {
+            val event: Evento = Evento(
+                i.objectId,
+                i.getString("titulo").toString(),
+                i.getString("tipo").toString(),
+                i.getString("descripcion").toString(),
+                i.getString("lugar").toString(),
+                i.getString("ciudad").toString(),
+                i.getString("fechaInicio").toString(),
+                i.getString("fechaFin").toString(),
+                i.getString("foto").toString(),
+                i.getString("creador").toString()
+            )
+            eventos.add(event)
         }
-        Log.d("LISTA EVENTOS FINAL", eventos.toString())
         return eventos
     }
 
 
+
     fun nuevoEvent(titulo: String, tipo: String, descripcion: String, lugar: String, ciudad: String, fechainicio: String, fechafin: String, url: String, creador : String, actividad : MainActivity){
-        val newevento = Evento(titulo, tipo, descripcion, lugar, ciudad, fechainicio, fechafin, url, creador)
         val firstObject = ParseObject("Evento")
-        firstObject.put("titulo", newevento.titulo)
-        firstObject.put("tipo", newevento.tipo)
-        firstObject.put("descripcion", newevento.descripcion)
-        firstObject.put("lugar", newevento.lugar)
-        firstObject.put("ciudad", newevento.ciudad)
-        firstObject.put("fechaInicio", newevento.fechaInicio)
-        firstObject.put("fechaFin", newevento.fechaFin)
-        firstObject.put("foto", newevento.foto)
-        firstObject.put("creador", newevento.creador)
+        firstObject.put("titulo", titulo)
+        firstObject.put("tipo", tipo)
+        firstObject.put("descripcion", descripcion)
+        firstObject.put("lugar", lugar)
+        firstObject.put("ciudad", ciudad)
+        firstObject.put("fechaInicio", fechainicio)
+        firstObject.put("fechaFin", fechafin)
+        firstObject.put("foto", url)
+        firstObject.put("creador", creador)
         firstObject.saveInBackground{
             if (it != null){
                 it.localizedMessage?.let { message ->
