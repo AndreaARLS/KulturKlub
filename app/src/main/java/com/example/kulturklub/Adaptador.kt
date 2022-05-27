@@ -30,7 +30,6 @@ class Adaptador(var fragmento: Fragment , var eventos: MutableList<Evento>, var 
 
         init {
             v.setOnClickListener(){
-                Log.d("ANDREA", this.adapterPosition.toString())
                 val miBundle: Bundle = bundleOf("id" to this.adapterPosition)
                 fragmento.findNavController().navigate(R.id.action_thirdFragment_to_sixthFragment, miBundle)
             }
