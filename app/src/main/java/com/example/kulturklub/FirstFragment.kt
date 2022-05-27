@@ -60,6 +60,7 @@ class FirstFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
+        menu.findItem((activity as MainActivity).home)?.isVisible = false
         menu.findItem((activity as MainActivity).usermenu)?.isVisible = false
         menu.findItem((activity as MainActivity).creatormenu)?.isVisible = false
         menu.findItem((activity as MainActivity).logoutmenu)?.isVisible = false

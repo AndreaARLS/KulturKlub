@@ -80,6 +80,7 @@ class SixthFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
+        menu.findItem((activity as MainActivity).home)?.isVisible = true
         menu.findItem((activity as MainActivity).usermenu)?.isVisible = true
         menu.findItem((activity as MainActivity).creatormenu)?.isVisible = true
         menu.findItem((activity as MainActivity).logoutmenu)?.isVisible = true
@@ -89,6 +90,7 @@ class SixthFragment : Fragment() {
         val bundle1 = bundleOf("id" to (activity as MainActivity).currentUser)
         val bundle2 = bundleOf("id" to evento.creador)
         when (item.itemId) {
+            (activity as MainActivity).home -> findNavController().navigate(R.id.action_sixthFragment_to_thirdFragment)
             (activity as MainActivity).usermenu -> findNavController().navigate(R.id.action_sixthFragment_to_seventhFragment, bundle1)
             (activity as MainActivity).creatormenu -> {
                 findNavController().navigate(R.id.action_sixthFragment_to_seventhFragment, bundle2)

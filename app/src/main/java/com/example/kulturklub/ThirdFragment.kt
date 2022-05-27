@@ -51,6 +51,7 @@ class ThirdFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
+        menu.findItem((activity as MainActivity).home)?.isVisible = false
         menu.findItem((activity as MainActivity).usermenu)?.isVisible = true
         menu.findItem((activity as MainActivity).creatormenu)?.isVisible = false
         menu.findItem((activity as MainActivity).logoutmenu)?.isVisible = true
@@ -60,7 +61,6 @@ class ThirdFragment : Fragment() {
         val bundle1 = bundleOf("id" to (activity as MainActivity).currentUser)
         when (item.itemId) {
             (activity as MainActivity).usermenu -> findNavController().navigate(R.id.action_thirdFragment_to_seventhFragment, bundle1)
-            (activity as MainActivity).creatormenu -> false
             (activity as MainActivity).logoutmenu -> findNavController().navigate(R.id.action_thirdFragment_to_FirstFragment)
         }
         return super.onOptionsItemSelected(item)

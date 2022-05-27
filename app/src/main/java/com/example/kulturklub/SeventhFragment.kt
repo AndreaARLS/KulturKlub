@@ -65,6 +65,7 @@ class SeventhFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
+        menu.findItem((activity as MainActivity).home)?.isVisible = true
         menu.findItem((activity as MainActivity).usermenu)?.isVisible = true
         menu.findItem((activity as MainActivity).creatormenu)?.isVisible = false
         menu.findItem((activity as MainActivity).logoutmenu)?.isVisible = true
@@ -73,6 +74,7 @@ class SeventhFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val bundle1 = bundleOf("id" to (activity as MainActivity).currentUser)
         when (item.itemId) {
+            (activity as MainActivity).home -> findNavController().navigate(R.id.action_seventhFragment_to_thirdFragment)
             (activity as MainActivity).usermenu -> findNavController().navigate(R.id.action_seventhFragment_self, bundle1)
             (activity as MainActivity).logoutmenu -> findNavController().navigate(R.id.action_seventhFragment_to_FirstFragment)
         }

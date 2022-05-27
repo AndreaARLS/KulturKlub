@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     var titulin: String = "KulturKlub"
     val modelo : VM by viewModels()
     var currentUser : String = "adr5jfWfJz"
+    var home = R.id.home
     var usermenu = R.id.miUsuario
     var creatormenu = R.id.organizador
     var logoutmenu = R.id.logout
