@@ -1,5 +1,6 @@
 package com.example.kulturklub
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.AdapterView
@@ -33,42 +34,47 @@ class EighthFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val id: Int = arguments?.getInt("id") ?:-1
+        val id: String = arguments?.getString("id") ?: ""
 
         setHasOptionsMenu(true)
         activity?.title= "Editar usuario"
 
+        var usuarios = (activity as MainActivity).modelo.consultarUsuarios()
+        lateinit var usu : Usuario
+        for (u in usuarios){
+            if (u.id == id){
+                usu = u
+            }
+        }
 
         val name = binding.editUsernameInput
-        name.setText((activity as MainActivity).modelo.usuarios[id].username)
+        name.setText(usu.username)
         val email = binding.editEmailInput
-        email.setText((activity as MainActivity).modelo.usuarios[id].email)
+        email.setText(usu.email)
         val pwd = binding.editPasswordInput
-        pwd.setText((activity as MainActivity).modelo.usuarios[id].password)
+        pwd.setText(usu.password)
         val img = binding.editUrlInput
-        img.setText((activity as MainActivity).modelo.usuarios[id].avatar)
-
-
+        img.setText(usu.avatar)
 
         val botonGuardar = binding.guardarEditarEvento
-
 
         botonGuardar.setOnClickListener {
             var name = binding.editUsernameInput.text.toString()
             var email = binding.editEmailInput.text.toString()
             var pwd = binding.editPasswordInput.text.toString()
             var img = binding.editUrlInput.text.toString()
-
             if (!name.equals("") && !email.equals("") && !pwd.equals("")){
-                (activity as MainActivity).modelo.editUser(id, name, email,pwd,img)
-                findNavController().navigate(R.id.action_eighthFragment_to_seventhFragment)
+                (activity as MainActivity).modelo.editUser(id, name, email,pwd,img, activity as MainActivity)
+                val bundle = bundleOf("id" to id)
+                findNavController().navigate(R.id.action_eighthFragment_to_seventhFragment, bundle)
             }
         }
 
         val botonCancelar = binding.cancelbutton
 
         botonCancelar.setOnClickListener {
-            findNavController().navigate(R.id.action_eighthFragment_to_seventhFragment)
+            val bundle = bundleOf("id" to id)
+            findNavController().navigate(R.id.action_eighthFragment_to_seventhFragment, bundle)
         }
 
     }

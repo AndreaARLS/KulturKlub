@@ -41,6 +41,7 @@ class SixthFragment : Fragment() {
         evento = eventos[position]
         eventid = evento.id
 
+
         setHasOptionsMenu(true)
         activity?.title= "Detalles de evento"
 
@@ -86,7 +87,7 @@ class SixthFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val bundle1 = bundleOf("id" to (activity as MainActivity).currentUser)
-        val bundle2 = bundleOf("id" to (evento.id))
+        val bundle2 = bundleOf("id" to evento.creador)
         when (item.itemId) {
             (activity as MainActivity).usermenu -> findNavController().navigate(R.id.action_sixthFragment_to_seventhFragment, bundle1)
             (activity as MainActivity).creatormenu -> {

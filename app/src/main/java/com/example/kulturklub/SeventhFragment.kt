@@ -34,21 +34,29 @@ class SeventhFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        idUser = arguments?.getInt("id") ?:-1
+        var id = arguments?.getString("id") ?: ""
 
         setHasOptionsMenu(true)
         activity?.title= "Detalles de usuario"
 
+        var usuarios = (activity as MainActivity).modelo.consultarUsuarios()
+        lateinit var usu : Usuario
+        for (u in usuarios){
+            if (u.id == id){
+                usu = u
+            }
+        }
+
         val username = binding.userNombre
-        username.setText((activity as MainActivity).modelo.usuarios[idUser].username)
+        username.setText(usu.username)
         val email = binding.userEmail
-        email.setText((activity as MainActivity).modelo.usuarios[idUser].email)
+        email.setText(usu.email)
         val avatar = binding.imageUsuario
-        Glide.with(this).load((activity as MainActivity).modelo.usuarios[idUser].avatar).into(avatar)
+        Glide.with(this).load(usu.avatar).into(avatar)
 
 
         binding.editIcon4.setOnClickListener(){
-            val bundle = bundleOf("id" to idUser)
+            val bundle = bundleOf("id" to id)
             this.findNavController().navigate(R.id.action_seventhFragment_to_eighthFragment, bundle)
         }
 

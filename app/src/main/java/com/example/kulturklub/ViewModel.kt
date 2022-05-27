@@ -172,8 +172,26 @@ class VM: ViewModel() {
         }
     }
 
-    fun editUser(id: String, username: String, email: String, password: String, avatar: String){
-
+    fun editUser(id: String, username: String, email: String, password: String, avatar: String, actividad: MainActivity){
+        val query = ParseQuery.getQuery<ParseObject>("Usuario")
+        query.whereEqualTo("objectId", id)
+        query.getFirstInBackground{ parseObject, parseException ->
+            if (parseException == null){
+                parseObject.put("username", username)
+                parseObject.put("email", email)
+                parseObject.put("password", password)
+                parseObject.put("avatar", avatar)
+                parseObject.saveInBackground{
+                    if (it != null){
+                        it.localizedMessage?.let{ message ->
+                            Toast.makeText(actividad, "Algo no ha ido bien. No se ha podido actualizar el usuario", Toast.LENGTH_LONG).show()
+                        }
+                    }else {
+                        Toast.makeText(actividad, "Usuario actualizado.", Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+        }
     }
 
 
