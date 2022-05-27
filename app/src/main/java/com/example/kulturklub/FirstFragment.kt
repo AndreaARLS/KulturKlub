@@ -35,8 +35,23 @@ class FirstFragment : Fragment() {
         activity?.title= "Kultur Klub"
 
         binding.loginButton.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_thirdFragment)
+            var email = binding.emailInput.text.toString()
+            var pwd = binding.passwordInput.text.toString()
+            var usuarios = (activity as MainActivity).modelo.consultarUsuarios()
+            var encontrado : Boolean = false
+            for (u in usuarios){
+                if (u.email==email && u.password==pwd){
+                    encontrado = true
+                    (activity as MainActivity).currentUser = u.id
+                    findNavController().navigate(R.id.action_FirstFragment_to_thirdFragment)
+                }
+            }
+            if (encontrado == false){
+                binding.emailInput.setText("")
+                binding.passwordInput.setText("")
+            }
         }
+
 
         binding.registerLink.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)

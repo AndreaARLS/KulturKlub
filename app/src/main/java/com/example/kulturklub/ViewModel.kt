@@ -7,8 +7,6 @@ import com.parse.ParseQuery
 
 class VM: ViewModel() {
 
-    var usuarios : MutableList<Usuario> = mutableListOf()
-
     /*var event1 = Evento("The Hives", "CONCIERTO", "Garage rock, punk rock, postpunk music. Tercera gira de The Hives por España y segundo concierto en Vitoria-Gasteiz. Entradas a la venta en ticketmaster.com", "Sala Kubik", "Vitoria-Gasteiz", "28/08/2022", "", "https://m.media-amazon.com/images/I/71RTSRlqvnL._SY355_.jpg",2)
     var event2 = Evento("Clutch", "CONCIERTO", "Garage rock, punk rock, postpunk music. Tercera gira de The Hives por España y segundo concierto en Vitoria-Gasteiz. Entradas a la venta en ticketmaster.com", "Sala Kubik", "Vitoria-Gasteiz", "28/08/2022", "", "https://www.rutarock.com/wp-content/uploads/2020/01/unnamed.jpg",2)
     var event3 = Evento("Hitchcock", "CICLO DE CINE", "Garage rock, punk rock, postpunk music. Tercera gira de The Hives por España y segundo concierto en Vitoria-Gasteiz. Entradas a la venta en ticketmaster.com", "Sala Kubik", "Vitoria-Gasteiz", "28/08/2022", "", "https://www.alohacriticon.com/wp-content/uploads/2004/07/the-hives-discografia-t-suecia.jpg",1)
@@ -138,6 +136,25 @@ class VM: ViewModel() {
 
 
     /// FUCNIONES USUARIOS
+    fun consultarUsuarios(): MutableList<Usuario> {
+        var usuarios: MutableList<Usuario> = mutableListOf()
+        val query = ParseQuery.getQuery<ParseObject>("Usuario")
+        query.orderByAscending("username")
+        val lista = query.find()
+        for (i in lista) {
+            val usu: Usuario = Usuario(
+                i.objectId,
+                i.getString("username").toString(),
+                i.getString("email").toString(),
+                i.getString("password").toString(),
+                i.getString("avatar").toString()
+            )
+            usuarios.add(usu)
+        }
+        return usuarios
+    }
+
+
 
     fun nuevoUser(name: String, email: String, password: String, avatar: String, actividad : MainActivity){
         val firstObject = ParseObject("Usuario")
@@ -155,11 +172,8 @@ class VM: ViewModel() {
         }
     }
 
-    fun editUser(posicion: Int, username: String, email: String, password: String, avatar: String){
-        usuarios[posicion].username = username
-        usuarios[posicion].email = email
-        usuarios[posicion].password = password
-        usuarios[posicion].avatar = avatar
+    fun editUser(id: String, username: String, email: String, password: String, avatar: String){
+
     }
 
 
