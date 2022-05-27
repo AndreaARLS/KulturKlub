@@ -114,12 +114,12 @@ class VM: ViewModel() {
 
     }
 
+    fun delEvent(id: String,actividad: MainActivity) {
 
-    fun deleteEvent(id: String, actividad: MainActivity){
         val query = ParseQuery.getQuery<ParseObject>("Evento")
         query.whereEqualTo("objectId", id)
-        query.getFirstInBackground{ parseObject, parseException ->
-            if (parseException != null){
+        query.getFirstInBackground { parseObject, parseException ->
+            if (parseException == null) {
                 parseObject.deleteInBackground {
                     if (it != null){
                         it.localizedMessage?.let { message ->

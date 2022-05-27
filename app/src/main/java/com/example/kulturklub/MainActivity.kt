@@ -2,6 +2,7 @@ package com.example.kulturklub
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -74,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         delbutton.setOnClickListener {
-            //modelo.deleteEvent(id)
+            modelo.delEvent(id, this)
             dialog.hide()
         }
     }
