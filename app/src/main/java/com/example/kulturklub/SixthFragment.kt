@@ -36,14 +36,10 @@ class SixthFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        eventid = arguments?.getString("id")?: ""
-        var eventos : MutableList<Evento> = (activity as MainActivity).modelo.consultarEventos()
-        for (i in eventos){
-            if (i.id.equals("eventid")){
-                evento = i
-            }
-        }
-
+        var position = arguments?.getInt("id")?: -1
+        val eventos : MutableList<Evento> = (activity as MainActivity).modelo.consultarEventos()
+        evento = eventos[position]
+        eventid = evento.id
 
         setHasOptionsMenu(true)
         activity?.title= "Detalles de evento"

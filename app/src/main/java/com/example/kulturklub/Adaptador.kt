@@ -1,5 +1,6 @@
 package com.example.kulturklub
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,33 +16,25 @@ class Adaptador(var fragmento: Fragment , var eventos: MutableList<Evento>, var 
 
 
     inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        var tipo: TextView
-        var titulo: TextView
-        var ciudad: TextView
-        var fechas: TextView
-        var foto: ImageView
+        var tipo: TextView = v.findViewById(R.id.tipo)
+        var titulo: TextView = v.findViewById(R.id.Titulo)
+        var ciudad: TextView = v.findViewById(R.id.ciudad)
+        var fechas: TextView = v.findViewById(R.id.fechas)
+        var foto: ImageView = v.findViewById(R.id.fotoEvento)
 
 
-        var botonEdit : ImageView
-        var botonDelete : ImageView
+        var botonEdit : ImageView = v.findViewById(R.id.editIcon)
+        var botonDelete : ImageView = v.findViewById(R.id.deleteIcon)
 
-        var posicion = -1
+
 
         init {
-            tipo = v.findViewById(R.id.tipo)
-            titulo = v.findViewById(R.id.Titulo)
-            ciudad = v.findViewById(R.id.ciudad)
-            fechas = v.findViewById(R.id.fechas)
-            foto = v.findViewById(R.id.fotoEvento)
-            botonEdit = v.findViewById(R.id.editIcon)
-            botonDelete = v.findViewById(R.id.deleteIcon)
             v.setOnClickListener(){
-                val miBundle: Bundle = bundleOf("id" to this.posicion)
+                Log.d("ANDREA", this.adapterPosition.toString())
+                val miBundle: Bundle = bundleOf("id" to this.adapterPosition)
                 fragmento.findNavController().navigate(R.id.action_thirdFragment_to_sixthFragment, miBundle)
             }
         }
-
-
 
     }
 
@@ -78,14 +71,7 @@ class Adaptador(var fragmento: Fragment , var eventos: MutableList<Evento>, var 
             activity.popupDelete(bundle)
 
         }
-
-
-
-
     }
-
-
-
 
 
 }
