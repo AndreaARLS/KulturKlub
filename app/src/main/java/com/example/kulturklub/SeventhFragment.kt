@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
 import androidx.core.os.bundleOf
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -53,6 +54,9 @@ class SeventhFragment : Fragment() {
         email.setText(usu.email)
         val avatar = binding.imageUsuario
         Glide.with(this).load(usu.avatar).into(avatar)
+        if (!usu.id.equals((activity as MainActivity).currentUser)){
+            binding.editIcon4.isGone = true
+        }
 
 
         binding.editIcon4.setOnClickListener(){

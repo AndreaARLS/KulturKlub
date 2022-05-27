@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.os.bundleOf
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -57,6 +58,10 @@ class Adaptador(var fragmento: Fragment , var eventos: MutableList<Evento>, var 
             holder.fechas.text = eventos[position].fechaInicio + " - " + eventos[position].fechaFin
         }
         Glide.with(activity).load(eventos[position].foto).into(holder.foto)
+        if (!eventos[position].creador.equals(activity.currentUser)){
+            holder.botonEdit.isGone = true
+            holder.botonDelete.isGone = true
+        }
 
 
         holder.botonEdit.setOnClickListener(){

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.core.os.bundleOf
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -61,6 +62,10 @@ class SixthFragment : Fragment() {
         descripcion.setText(evento.descripcion)
         val imagen = binding.imageEvento
         Glide.with(this).load(evento.foto).into(imagen)
+        if (!evento.creador.equals((activity as MainActivity).currentUser)){
+            binding.editIcon3.isGone = true
+            binding.deleteIcon3.isGone = true
+        }
 
 
 
