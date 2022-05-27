@@ -3,6 +3,7 @@ package com.example.kulturklub
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.kulturklub.databinding.FragmentFirstBinding
@@ -44,11 +45,13 @@ class FirstFragment : Fragment() {
                     encontrado = true
                     (activity as MainActivity).currentUser = u.id
                     findNavController().navigate(R.id.action_FirstFragment_to_thirdFragment)
+                    Toast.makeText(activity as MainActivity, "HOLA " + u.username, Toast.LENGTH_LONG).show()
                 }
             }
             if (encontrado == false){
                 binding.emailInput.setText("")
                 binding.passwordInput.setText("")
+                Toast.makeText(activity as MainActivity, "Usuario o contraseña erróneos", Toast.LENGTH_LONG).show()
             }
         }
 
