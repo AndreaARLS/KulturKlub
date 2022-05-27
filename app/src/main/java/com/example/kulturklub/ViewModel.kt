@@ -140,12 +140,11 @@ class VM: ViewModel() {
     /// FUCNIONES USUARIOS
 
     fun nuevoUser(name: String, email: String, password: String, avatar: String, actividad : MainActivity){
-        val newUsuario = Usuario(name, email, password, avatar)
         val firstObject = ParseObject("Usuario")
-        firstObject.put("name", newUsuario.username)
-        firstObject.put("email", newUsuario.email)
-        firstObject.put("password", newUsuario.password)
-        firstObject.put("avatar", newUsuario.avatar)
+        firstObject.put("username", name)
+        firstObject.put("email", email)
+        firstObject.put("password", password)
+        firstObject.put("avatar", avatar)
         firstObject.saveInBackground{
             if (it != null){
                 it.localizedMessage?.let { message ->
