@@ -1,13 +1,12 @@
 package com.example.kulturklub
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.os.bundleOf
-import androidx.core.view.isGone
+import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -59,8 +58,8 @@ class Adaptador(var fragmento: Fragment , var eventos: MutableList<Evento>, var 
         }
         Glide.with(activity).load(eventos[position].foto).into(holder.foto)
         if (!eventos[position].creador.equals(activity.currentUser)){
-            holder.botonEdit.isGone = true
-            holder.botonDelete.isGone = true
+            holder.botonEdit.isInvisible = true
+            holder.botonDelete.isInvisible = true
         }
 
 
@@ -72,9 +71,9 @@ class Adaptador(var fragmento: Fragment , var eventos: MutableList<Evento>, var 
         holder.botonDelete.setOnClickListener(){
             val bundle = bundleOf("id" to eventos[position].id, "name" to eventos[position].titulo)
             activity.popupDelete(bundle)
-
         }
     }
+
 
 
 }
