@@ -2,7 +2,6 @@ package com.example.kulturklub
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -11,6 +10,7 @@ import android.view.Menu
 import android.widget.TextView
 import androidx.activity.viewModels
 import com.example.kulturklub.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
-        //setupActionBarWithNavController(navController, appBarConfiguration)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         
     }
@@ -80,5 +79,4 @@ class MainActivity : AppCompatActivity() {
             dialog.hide()
         }
     }
-
 }
