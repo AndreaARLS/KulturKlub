@@ -67,20 +67,10 @@ class ThirdFragment : Fragment() {
     }
 
 
-
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
-    public fun rellenarRecycler(view: View){
-        miRecyclerView = binding.recycler
-        miRecyclerView.layoutManager = LinearLayoutManager(activity)
 
-        val lista = (activity as MainActivity).modelo.consultarEventos()
-
-        miRecyclerView.adapter = Adaptador(this, lista, activity as MainActivity)
-
-    }
 }
