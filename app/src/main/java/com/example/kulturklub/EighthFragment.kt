@@ -62,9 +62,10 @@ class EighthFragment : Fragment() {
             var name = binding.editUsernameInput.text.toString()
             var email = binding.editEmailInput.text.toString()
             var pwd = binding.editPasswordInput.text.toString()
+            var pass = (activity as MainActivity).hashString(pwd)
             var img = binding.editUrlInput.text.toString()
             if (!name.equals("") && !email.equals("") && !pwd.equals("")){
-                (activity as MainActivity).modelo.editUser(id, name, email,pwd,img, activity as MainActivity)
+                (activity as MainActivity).modelo.editUser(id, name, email,pass,img, activity as MainActivity)
                 val bundle = bundleOf("id" to id)
                 findNavController().navigate(R.id.action_eighthFragment_to_seventhFragment, bundle)
             }
