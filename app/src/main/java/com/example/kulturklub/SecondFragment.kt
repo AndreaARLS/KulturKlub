@@ -39,8 +39,9 @@ class SecondFragment : Fragment() {
             var avatar = binding.imageInput.text.toString()
             var email = binding.emailInput.text.toString()
             var pwd = binding.passwordInput.text.toString()
+            var pass = (activity as MainActivity).hashString(pwd)
             if (!name.equals("") && !email.equals("") && !pwd.equals("")){
-                (activity as MainActivity).modelo.nuevoUser(name, email, pwd, avatar, (activity as MainActivity))
+                (activity as MainActivity).modelo.nuevoUser(name, email, pass, avatar, (activity as MainActivity))
                 findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
             }
         }

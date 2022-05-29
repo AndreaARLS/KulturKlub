@@ -38,10 +38,11 @@ class FirstFragment : Fragment() {
         binding.loginButton.setOnClickListener {
             var email = binding.emailInput.text.toString()
             var pwd = binding.passwordInput.text.toString()
+            var pass = (activity as MainActivity).hashString(pwd)
             var usuarios = (activity as MainActivity).modelo.consultarUsuarios()
             var encontrado : Boolean = false
             for (u in usuarios){
-                if (u.email==email && u.password==pwd){
+                if (u.email==email && u.password==pass){
                     encontrado = true
                     (activity as MainActivity).currentUser = u.id
                     findNavController().navigate(R.id.action_FirstFragment_to_thirdFragment)

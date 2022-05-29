@@ -10,6 +10,7 @@ import android.view.Menu
 import android.widget.TextView
 import androidx.activity.viewModels
 import com.example.kulturklub.databinding.ActivityMainBinding
+import java.security.MessageDigest
 
 
 class MainActivity : AppCompatActivity() {
@@ -79,4 +80,15 @@ class MainActivity : AppCompatActivity() {
             dialog.hide()
         }
     }
+
+
+    public fun hashString(pass: String): String {
+        return MessageDigest
+            .getInstance("SHA-256")
+            .digest(pass.toByteArray())
+            .fold("", { str, it -> str + "%02x".format(it) })
+    }
+
+
+
 }
