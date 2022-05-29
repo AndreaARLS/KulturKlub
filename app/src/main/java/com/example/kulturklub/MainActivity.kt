@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
 
     public fun hashString(pass: String): String {
         return MessageDigest
-            .getInstance("SHA-256")
+            .getInstance("MD5")
             .digest(pass.toByteArray())
             .fold("", { str, it -> str + "%02x".format(it) })
     }
