@@ -20,9 +20,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976"
-        app:maxImageSize="32dp"
-        app:rippleColor="#FFFFFF"
-        app:srcCompat="@android:drawable/ic_menu_add" />
+        app:maxImageSize="24dp"
+        app:rippleColor="#ffffff"
+        app:srcCompat="@drawable/mas"
+        app:tint="#ffffff" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
