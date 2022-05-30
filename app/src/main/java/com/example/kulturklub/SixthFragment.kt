@@ -62,24 +62,7 @@ class SixthFragment : Fragment() {
         descripcion.setText(evento.descripcion)
         val imagen = binding.imageEvento
         Glide.with(this).load(evento.foto).into(imagen)
-        if (!evento.creador.equals((activity as MainActivity).currentUser)){
-            binding.editIcon3.isGone = true
-            binding.deleteIcon3.isGone = true
-        }
-
-
-
-        binding.editIcon3.setOnClickListener(){
-            val bundle = bundleOf("id" to eventid)
-            this.findNavController().navigate(R.id.action_thirdFragment_to_fifthFragment, bundle)
-        }
-
-        binding.deleteIcon3.setOnClickListener(){
-
-            val bundle = bundleOf("id" to eventid, "name" to titulo)
-            (activity as MainActivity).popupDelete(bundle)
-
-        }
+                
     }
 
 
