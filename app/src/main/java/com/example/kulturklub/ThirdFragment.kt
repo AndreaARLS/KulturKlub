@@ -61,7 +61,10 @@ class ThirdFragment : Fragment() {
         val bundle1 = bundleOf("id" to (activity as MainActivity).currentUser)
         when (item.itemId) {
             (activity as MainActivity).usermenu -> findNavController().navigate(R.id.action_thirdFragment_to_seventhFragment, bundle1)
-            (activity as MainActivity).logoutmenu -> findNavController().navigate(R.id.action_thirdFragment_to_FirstFragment)
+            (activity as MainActivity).logoutmenu -> {
+                (activity as MainActivity).currentUser = ""
+                findNavController().navigate(R.id.action_thirdFragment_to_FirstFragment)
+            }
         }
         return super.onOptionsItemSelected(item)
     }

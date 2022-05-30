@@ -83,7 +83,10 @@ class SixthFragment : Fragment() {
             (activity as MainActivity).creatormenu -> {
                 findNavController().navigate(R.id.action_sixthFragment_to_seventhFragment, bundle2)
             }
-            (activity as MainActivity).logoutmenu -> findNavController().navigate(R.id.action_sixthFragment_to_FirstFragment)
+            (activity as MainActivity).logoutmenu -> {
+                (activity as MainActivity).currentUser = ""
+                findNavController().navigate(R.id.action_sixthFragment_to_FirstFragment)
+            }
         }
         return super.onOptionsItemSelected(item)
     }

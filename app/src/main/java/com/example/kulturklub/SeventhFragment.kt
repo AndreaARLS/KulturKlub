@@ -80,7 +80,10 @@ class SeventhFragment : Fragment() {
         when (item.itemId) {
             (activity as MainActivity).home -> findNavController().navigate(R.id.action_seventhFragment_to_thirdFragment)
             (activity as MainActivity).usermenu -> findNavController().navigate(R.id.action_seventhFragment_self, bundle1)
-            (activity as MainActivity).logoutmenu -> findNavController().navigate(R.id.action_seventhFragment_to_FirstFragment)
+            (activity as MainActivity).logoutmenu -> {
+                (activity as MainActivity).currentUser = ""
+                findNavController().navigate(R.id.action_seventhFragment_to_FirstFragment)
+            }
         }
         return super.onOptionsItemSelected(item)
     }

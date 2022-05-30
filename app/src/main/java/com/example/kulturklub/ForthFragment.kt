@@ -95,7 +95,10 @@ class ForthFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            (activity as MainActivity).logoutmenu -> findNavController().navigate(R.id.action_forthFragment_to_FirstFragment)
+            (activity as MainActivity).logoutmenu -> {
+                (activity as MainActivity).currentUser = ""
+                findNavController().navigate(R.id.action_forthFragment_to_FirstFragment)
+            }
         }
         return super.onOptionsItemSelected(item)
     }

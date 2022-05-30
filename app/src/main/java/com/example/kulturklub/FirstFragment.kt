@@ -47,6 +47,8 @@ class FirstFragment : Fragment() {
                     (activity as MainActivity).currentUser = u.id
                     findNavController().navigate(R.id.action_FirstFragment_to_thirdFragment)
                     Toast.makeText(activity as MainActivity, "HOLA " + u.username, Toast.LENGTH_LONG).show()
+                    binding.emailInput.setText("")
+                    binding.passwordInput.setText("")
                 }
             }
             if (encontrado == false){
